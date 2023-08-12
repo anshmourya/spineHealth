@@ -15,6 +15,7 @@ router.get("/visit/:id", async (req, res) => {
 
     try {
         const { id: patientId } = req.params
+
         const patientRef = await user.doc(patientId).collection("visit").get();
         const response = patientRef.docs.map((doc) => doc.data())
 
@@ -32,7 +33,7 @@ router.get("/visit/:id", async (req, res) => {
             data: null
         })
     }
-})
+});
 
 //get particular visit of the particular patient
 router.get("/visit/:id/:visitId", async (req, res) => {
@@ -55,7 +56,7 @@ router.get("/visit/:id/:visitId", async (req, res) => {
             data: null
         })
     }
-})
+});
 
 
 //add new vist to the database
@@ -88,7 +89,7 @@ router.post("/visit", async (req, res) => {
         })
     }
 
-})
+});
 
 //edit the existing visit or update the existing of the patient
 router.put("/visit", async (req, res) => {
@@ -113,7 +114,7 @@ router.put("/visit", async (req, res) => {
             data: null
         });
     }
-})
+});
 
 //deleting the vist of the existing patient
 router.delete("/visit/:id/:visitId", async (req, res) => {
@@ -138,5 +139,5 @@ router.delete("/visit/:id/:visitId", async (req, res) => {
         });
     }
 
-})
+});
 module.exports = router

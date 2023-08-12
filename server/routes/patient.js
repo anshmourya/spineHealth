@@ -67,6 +67,7 @@ router.post("/patient", async (req, res) => {
     const PatientId = uniqid("", `-${name}`)
     const newPatient = {
         id: PatientId,
+        name,
         ...patientData,
         timeOfVisit: getCurrentTimeAndDate(),
     };
