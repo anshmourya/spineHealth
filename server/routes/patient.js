@@ -60,25 +60,25 @@ router.get("/patient/:id", async (req, res) => {
 })
 //add data to the database
 router.post("/patient", async (req, res) => {
-    const { name, ...patientData } = req.body;
+    const { phoneNumber, ...patientData } = req.body;
 
     //patientData is consists of {name , age , phoneNumber , gender , nature of disease , medication given , history of disease[if any], note[if any]}    
 
-    const PatientId = uniqid("", `-${name}`)
+    const PatientId = uniqid("", `-${phoneNumber}`)
     const newPatient = {
         id: PatientId,
-        name,
         ...patientData,
+        phoneNumber,
         timeOfVisit: getCurrentTimeAndDate(),
     };
-
+    console.log(phoneNumber);
     try {
         //waiting for the patient to be added [using phoneNumber as id cuz it always be unique]
         await user.doc(PatientId).set(newPatient);
 
         res.status(200).json({
             error: null,
-            message: `${name} is added to the database.`,
+            message: `pateint is added to the database.`,
             data: null
         });
 
@@ -112,9 +112,10 @@ router.put("/patient", async (req, res) => {
 });
 
 //delete the existing patient information from the database
-router.delete("/:id", async (req, res) => {
+router.delete("/patient/:id", async (req, res) => {
     try {
         const { id: PatientId } = req.params
+        console.log(PatientId);
         await user.doc(PatientId).delete()
 
         res.status(200).json({

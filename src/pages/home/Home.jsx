@@ -7,33 +7,55 @@ import SearchPatient from "../../generalComponents/SearchPatient";
 
 //icons
 import { AiOutlinePlus } from "react-icons/ai";
+import Loader from "../../components/loader/Loader";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const { patientData, getAllPatients } = useContext(Patient);
+  const { patientData, getAllPatients, deletePatient } = useContext(Patient);
 
-  const [patientToDisplay, setPatientToDisplay] = useState(null);
+  const [patientToDisplay, setPatientToDisplay] = useState([]);
+
   useEffect(() => {
     getAllPatients();
   }, []);
+
+  //pateint table header
+  const patientHeader = [
+    "name",
+    "age",
+    "phone Number",
+    "gender",
+    "nature Of Working",
+    "designation",
+    "time Of Visit",
+  ];
   return (
     <>
-      {
-        patientData &&   <><div className="container m-auto flex justify-between">
-        <SearchPatient
-          patientData={patientData}
-          setPatientToDisplay={setPatientToDisplay}
-        />
-        <div>
-          <CreatePatient />
-        </div>
-      </div>
+      {patientData && (
+        <>
+          <div className="container flex justify-between m-auto">
+            <SearchPatient
+              patientData={patientData}
+              setPatientToDisplay={setPatientToDisplay}
+            />
+            <div>
+              <Link to="/newPatient">
+                <CreatePatient />
+              </Link>
+            </div>
+          </div>
 
-      {patientToDisplay?.length > 0 ? (
-        <TableStructure patientData={patientToDisplay} />
-      ) : (
-        <div>loading...</div>
-      )}</>
-    }
+          {patientToDisplay.length > 0 ? (
+            <TableStructure
+              patientData={patientToDisplay}
+              deleteData={deletePatient}
+              Header={patientHeader}
+            />
+          ) : (
+            <Loader />
+          )}
+        </>
+      )}
     </>
   );
 };

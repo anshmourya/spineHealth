@@ -9,15 +9,23 @@ const SearchPatient = ({ setPatientToDisplay, patientData }) => {
   const [search, setSearch] = useState("");
 
   const handlePatientSearch = (searchText) => {
-    const filteredPatients = patientData.filter((patient) =>
-      patient.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setPatientToDisplay(filteredPatients);
+    if (search) {
+      const searchWords = searchText.toLowerCase().split(" ");
+
+      const filtredPatient = patientData.filter((patient) => {
+        const patientName = patient.name.toLowerCase();
+        return searchWords.every((word) => patientName.includes(word));
+      });
+      setPatientToDisplay(filtredPatient);
+    } else {
+      setPatientToDisplay(patientData);
+    }
   };
 
+  //?unning this function on envery patientData changes so if user delete the patient patient it automatically updates the patient table.
   const debouncedResults = useMemo(() => {
     return debounce(() => handlePatientSearch(search), 300);
-  }, [search, debounce]);
+  }, [search, debounce, patientData.length]);
 
   //useEffect to clean up any side effects from debounce when our component gets unmounted;
   useEffect(() => {
