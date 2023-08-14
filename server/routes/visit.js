@@ -61,6 +61,7 @@ router.get("/visit/:id/:visitId", async (req, res) => {
 
 //add new vist to the database
 router.post("/visit", async (req, res) => {
+    console.log(req.body);
     try {
         const { id: patientId, ...visitData } = req.body
         //vistData is consist of {nature of disease , medication given , note[if any]}

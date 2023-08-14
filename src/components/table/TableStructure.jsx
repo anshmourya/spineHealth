@@ -1,5 +1,6 @@
 //icons
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const TableStructure = ({ patientData, deleteData, Header }) => {
   return (
@@ -27,11 +28,15 @@ const TableStructure = ({ patientData, deleteData, Header }) => {
 
                   return (
                     <td
-                      key={index}
                       data-label={header}
-                      className="text-left capitalize"
+                      className="text-right capitalize lg:text-left"
+                      key={index}
                     >
-                      {patientDataValue !== undefined ? patientDataValue : "-"}
+                      <Link to="/visit" state={pateintData}>
+                        {patientDataValue !== undefined
+                          ? patientDataValue
+                          : "-"}
+                      </Link>
                     </td>
                   );
                 })}

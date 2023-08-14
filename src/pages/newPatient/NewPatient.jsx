@@ -77,7 +77,14 @@ const NewPatient = () => {
 
 export default NewPatient;
 
-export function TextInput({ type, title, handelChange, value, name }) {
+export function TextInput({
+  type,
+  title,
+  handelChange,
+  value,
+  name,
+  readOnly,
+}) {
   const inputName = (name || title).split(" ").join("");
   return (
     <div className="flex flex-col mx-3 ">
@@ -91,22 +98,25 @@ export function TextInput({ type, title, handelChange, value, name }) {
         name={inputName}
         onChange={(e) => handelChange(e)}
         required
+        readOnly={readOnly || false}
       />
     </div>
   );
 }
 
-function TextareaInput({ title, handelChange, value }) {
+export function TextareaInput({ title, handelChange, value, name, required }) {
+  const inputName = (name || title).split(" ").join("");
   return (
     <div className="mx-3 ">
       <label htmlFor="" className="block my-3 text-sm text-gray-500">
-        {title}
+        {title} {required && <span className="text-red-600">*</span>}
       </label>
       <textarea
-        name={title}
+        name={inputName}
         className="w-full px-3 border border-gray-300 rounded-md outline-none min-h-[70px] resize-none"
-        value={value[title] || ""}
+        value={value[inputName] || ""}
         onChange={(e) => handelChange(e)}
+        required={required || false}
       />
     </div>
   );
