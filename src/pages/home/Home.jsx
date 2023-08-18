@@ -40,7 +40,7 @@ const Home = () => {
             />
             <div>
               <Link to="/newPatient">
-                <CreatePatient />
+                <CreateButton />
               </Link>
             </div>
           </div>
@@ -50,6 +50,7 @@ const Home = () => {
               patientData={patientToDisplay}
               deleteData={deletePatient}
               Header={patientHeader}
+              TableDataView={TableDataView}
             />
           ) : (
             <Loader />
@@ -62,10 +63,20 @@ const Home = () => {
 
 export default Home;
 
-function CreatePatient({}) {
+export function CreateButton() {
   return (
-    <button className=" h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-blue-600 text-white">
+    <button className=" h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-orange-400 text-white">
       Create New Patient <AiOutlinePlus className="text-white" />
     </button>
+  );
+}
+
+function TableDataView({ patientDataValue, state }) {
+  return (
+    <>
+      <Link to="/visitView" state={state}>
+        {patientDataValue !== undefined ? patientDataValue : "-"}
+      </Link>
+    </>
   );
 }

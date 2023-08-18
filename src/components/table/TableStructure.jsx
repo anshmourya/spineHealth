@@ -1,8 +1,9 @@
 //icons
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Modal from "../../generalComponents/modal/Modal";
 
-const TableStructure = ({ patientData, deleteData, Header }) => {
+const TableStructure = ({ patientData, deleteData, Header, TableDataView }) => {
   return (
     <>
       <div className="container m-auto">
@@ -32,11 +33,10 @@ const TableStructure = ({ patientData, deleteData, Header }) => {
                       className="text-right capitalize lg:text-left"
                       key={index}
                     >
-                      <Link to="/visit" state={pateintData}>
-                        {patientDataValue !== undefined
-                          ? patientDataValue
-                          : "-"}
-                      </Link>
+                      <TableDataView
+                        patientDataValue={patientDataValue}
+                        state={pateintData}
+                      />
                     </td>
                   );
                 })}

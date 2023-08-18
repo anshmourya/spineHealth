@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { alert, success } from "../helper/notification";
 
 export const Patient = createContext();
 
@@ -16,7 +17,10 @@ export const PatientDataProvider = ({ children }) => {
         NewPatient
       );
 
-      response.data.error ? new Error(response.data.error) : navigate("/");
+      response.data.error
+        ? new Error(response.data.error)
+        : success(response.data.message);
+      navigate("/");
     } catch (error) {
       console.error(error);
       throw error;
@@ -44,6 +48,7 @@ export const PatientDataProvider = ({ children }) => {
       );
 
       response.data.error ? new Error(response.data.error) : getAllPatients();
+      success(response.data.message);
     } catch (error) {
       console.error(error);
       throw error;

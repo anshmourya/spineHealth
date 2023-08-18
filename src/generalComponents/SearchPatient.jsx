@@ -3,11 +3,12 @@
 import { useEffect, useState, useMemo } from "react";
 import debounce from "lodash.debounce";
 //icons
-import { BiSearchAlt } from "react-icons/bi";
+import SerachInput from "./input/search/SerachInput";
 
 const SearchPatient = ({ setPatientToDisplay, patientData }) => {
   const [search, setSearch] = useState("");
-
+  const handelChange = (e) => setSearch(e.target.value);
+  const handelClearSearch = () => setSearch("");
   const handlePatientSearch = (searchText) => {
     if (search) {
       const searchWords = searchText.toLowerCase().split(" ");
@@ -37,13 +38,10 @@ const SearchPatient = ({ setPatientToDisplay, patientData }) => {
 
   return (
     <>
-      <BiSearchAlt className="absolute m-[11px] " />
-      <input
-        type="text"
-        className="border outline-none px-[35px] py-[10px] h-[37px] rounded-lg capitalize"
-        placeholder="Search Patient"
+      <SerachInput
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChangeAction={handelChange}
+        clearInput={handelClearSearch}
       />
     </>
   );

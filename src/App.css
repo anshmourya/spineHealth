@@ -9,6 +9,10 @@
         sans-serif;
 }
 
+.content {
+    max-width: 1200px;
+    margin: auto;
+}
 
 /* *styling table */
 

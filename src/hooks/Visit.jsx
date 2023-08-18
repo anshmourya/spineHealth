@@ -12,7 +12,7 @@ export const VisitDataProvider = ({ children }) => {
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/visit`,
         {
-          newVisit,
+          ...newVisit,
           id: pateintID,
         }
       );
@@ -26,7 +26,21 @@ export const VisitDataProvider = ({ children }) => {
     }
   };
 
+  const VisitView = async (patientId) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/visit/${patientId}`
+      );
+      return response.data.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  };
+
   return (
-    <VisitData.Provider value={{ addVisit }}>{children}</VisitData.Provider>
+    <VisitData.Provider value={{ addVisit, VisitView }}>
+      {children}
+    </VisitData.Provider>
   );
 };
