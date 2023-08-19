@@ -1,16 +1,17 @@
-import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 //component
 import { TextInput, TextareaInput } from "../newPatient/NewPatient";
 import { VisitData } from "../../hooks/Visit";
 
 //component
 const Visit = () => {
+  const { id } = useParams();
+  const { addVisit, editVisit } = useContext(VisitData);
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const { addVisit } = useContext(VisitData);
-  const [newVisit, setNewVisit] = useState({});
+  const [newVisit, setNewVisit] = useState(state ? state : {});
 
   const handelChange = (e) => {
     let { name, value } = e.target;
@@ -21,41 +22,38 @@ const Visit = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addVisit(newVisit, state.id);
+    state ? editVisit(newVisit, id, state.visitId) : addVisit(newVisit, id);
   };
 
-  const textInputHeader = [
-    { title: "name", type: "text" },
-    { title: "age", type: "number" },
-    { title: "gender", type: "text" },
-    { title: "phoneNumber", type: "number" },
-  ];
+  // const textInputHeader = [
+  //   { title: "name", type: "text" },
+  //   { title: "age", type: "number" },
+  //   { title: "gender", type: "text" },
+  //   { title: "phoneNumber", type: "number" },
+  // ];
 
   const textareaInputHeader = [
-    { title: "Current Illness" },
-    { title: "Medication Given" },
-    { title: "Note (If Any)", name: "note" },
+    { title: "reason For Visit" },
+    { title: "prescribed Medications" },
+    { title: "Note (If Any)", name: "notes" },
   ];
 
-  useEffect(() => {
-    console.log(state);
-    state === null ? navigate("/") : console.log("ansh");
-  }, []);
   return (
     <>
-      {state && (
+      <>
+        <h1 className="py-4 text-xl text-center border-b">Visit</h1>
         <div className="container m-auto">
           <form action="" method="post" onSubmit={onSubmit}>
-            {textInputHeader.map((textInput, index) => (
+            {/* {textInputHeader.map((textInput, index) => (
               <TextInput
                 key={index}
                 title={textInput.title}
                 type={textInput.type}
-                value={state}
+                value={newVisit}
                 required={true}
                 handelChange={handelChange}
               />
-            ))}
+            ))} */}
 
             {textareaInputHeader.map((textareaInput, index) => (
               <TextareaInput
@@ -67,10 +65,15 @@ const Visit = () => {
                 required={true}
               />
             ))}
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              className="h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-orange-400 text-white text-center m-auto my-4  "
+            >
+              Submit
+            </button>
           </form>
         </div>
-      )}
+      </>
     </>
   );
 };

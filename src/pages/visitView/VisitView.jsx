@@ -1,18 +1,25 @@
-import SerachInput from "../../generalComponents/input/search/SerachInput";
 import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 //compoent
+import SerachInput from "../../generalComponents/input/search/SerachInput";
 import Modal from "../../generalComponents/modal/Modal";
 import TableStructure from "../../components/table/TableStructure";
 import { VisitData } from "../../hooks/Visit";
 import { CreateButton } from "../home/Home";
 
 const VisitView = () => {
-  const { VisitView } = useContext(VisitData);
+  const { VisitView, deleteVisit } = useContext(VisitData);
   const { state } = useLocation();
-  const { name, age, phonNumber, natureOfWorking, designation, timeOfVisit } =
-    state;
+  const {
+    name,
+    age,
+    phonNumber,
+    natureOfWorking,
+    designation,
+    timeOfVisit,
+    id: pateintId,
+  } = state;
 
   const [visit, setVisit] = useState([]);
   const patientHeader = [
@@ -20,8 +27,6 @@ const VisitView = () => {
     "prescribed Medications",
     "notes",
     "time Of Visit",
-    "edit",
-    "delete",
   ];
 
   //pateint table header
@@ -35,6 +40,9 @@ const VisitView = () => {
     "time Of Visit",
   ];
 
+  const handeldeleteVisit = (visit) => {
+    deleteVisit(state.id, visit.visitId);
+  };
   useEffect(() => {
     const fetchVisitData = async () => {
       try {
@@ -48,7 +56,6 @@ const VisitView = () => {
 
     fetchVisitData();
   }, []);
-
   return (
     <>
       <div className="px-2 content">
@@ -81,20 +88,21 @@ const VisitView = () => {
         </div>
 
         <div className="flex items-center justify-between px-2 content">
-          <h1 className="text-2xl font-semibold max-sm:text-lg">
-            Ansh Past Visit
-          </h1>
-          <CreateButton />
+          <h1 className="text-2xl font-semibold max-sm:text-lg">Past Visit</h1>
+          <Link to={`/visit/${pateintId}`}>
+            <CreateButton title={"create New Visit"} />
+          </Link>
           <SerachInput />
         </div>
         {/* //table view  */}
         {visit && (
           <>
-            {console.log(visit)}
             <TableStructure
               Header={patientHeader}
               patientData={visit}
               TableDataView={TableDataView}
+              editNavigationLink={`/visit/${pateintId}`}
+              deleteData={handeldeleteVisit}
             />
           </>
         )}
@@ -141,14 +149,12 @@ const PatientDetail = ({ patientData, header }) => (
       const patientDataTitle = headerItem.split(" ").join("");
       const patientDataValue = patientData[patientDataTitle];
       return (
-        <>
-          <div key={index}>
-            <h5 className="mt-2 font-semibold capitalize">{headerItem}</h5>
-            <p className="py-2 border-b">
-              {patientDataValue || "No data is present Here."}
-            </p>
-          </div>
-        </>
+        <div key={index}>
+          <h5 className="mt-2 font-semibold capitalize">{headerItem}</h5>
+          <p className="py-2 border-b">
+            {patientDataValue || "No data is present Here."}
+          </p>
+        </div>
       );
     })}
   </>

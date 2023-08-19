@@ -29,18 +29,22 @@ const Home = () => {
     "designation",
     "time Of Visit",
   ];
+
+  const handeldelete = (patient) => {
+    deletePatient(patient.id);
+  };
   return (
     <>
       {patientData && (
         <>
-          <div className="container flex justify-between m-auto">
+          <div className="container flex justify-between m-auto my-5">
             <SearchPatient
               patientData={patientData}
               setPatientToDisplay={setPatientToDisplay}
             />
             <div>
               <Link to="/newPatient">
-                <CreateButton />
+                <CreateButton title={"create new Patient"} />
               </Link>
             </div>
           </div>
@@ -48,9 +52,10 @@ const Home = () => {
           {patientToDisplay.length > 0 ? (
             <TableStructure
               patientData={patientToDisplay}
-              deleteData={deletePatient}
+              deleteData={handeldelete}
               Header={patientHeader}
               TableDataView={TableDataView}
+              editNavigationLink={"/newPatient"}
             />
           ) : (
             <Loader />
@@ -63,10 +68,10 @@ const Home = () => {
 
 export default Home;
 
-export function CreateButton() {
+export function CreateButton({ title }) {
   return (
-    <button className=" h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-orange-400 text-white">
-      Create New Patient <AiOutlinePlus className="text-white" />
+    <button className=" h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-orange-400 text-white capitalize">
+      {title} <AiOutlinePlus className="text-white" />
     </button>
   );
 }

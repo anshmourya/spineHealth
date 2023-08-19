@@ -7,8 +7,11 @@ import SerachInput from "./input/search/SerachInput";
 
 const SearchPatient = ({ setPatientToDisplay, patientData }) => {
   const [search, setSearch] = useState("");
+
   const handelChange = (e) => setSearch(e.target.value);
+  //handeling clear search functionality
   const handelClearSearch = () => setSearch("");
+
   const handlePatientSearch = (searchText) => {
     if (search) {
       const searchWords = searchText.toLowerCase().split(" ");

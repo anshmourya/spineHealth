@@ -67,7 +67,7 @@ router.post("/visit", async (req, res) => {
         //vistData is consist of {nature of disease , medication given , note[if any]}
         const visitId = uniqid()
         const newVisit = {
-            id: visitId,
+            visitId: visitId,
             ...visitData,
             timeOfVisit: getCurrentTimeAndDate()
         }
@@ -93,19 +93,19 @@ router.post("/visit", async (req, res) => {
 });
 
 //edit the existing visit or update the existing of the patient
-router.put("/visit", async (req, res) => {
+router.put("/visit/:patientId/:visitId", async (req, res) => {
     try {
-        const { id: patientId, visitId, ...updatedData } = req.body;
+        const { patientId, visitId } = req.params
+
 
         const patientRef = user.doc(patientId).collection("visit").doc(visitId);
-        await patientRef.update(updatedData);
+        await patientRef.update(req.body);
 
         res.status(200).json({
             error: null,
             message: "successfully updated visit of the patient",
             data: null,
         })
-
 
     } catch (error) {
         console.error(error);
@@ -119,9 +119,10 @@ router.put("/visit", async (req, res) => {
 
 //deleting the vist of the existing patient
 router.delete("/visit/:id/:visitId", async (req, res) => {
-    try {
-        const { id: patientId, visitId } = req.body;
 
+    try {
+        const { id: patientId, visitId } = req.params;
+        console.log(patientId, visitId);
         const pateintRef = user.doc(patientId).collection("visit").doc(visitId);
         await pateintRef.delete();
 

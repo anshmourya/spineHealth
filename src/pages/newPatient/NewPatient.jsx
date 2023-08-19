@@ -2,10 +2,15 @@ import { useState, useEffect, useContext } from "react";
 //component
 import { Patient } from "../../hooks/Patient";
 import Radio from "../../generalComponents/input/radio/Radio";
+import { useLocation } from "react-router-dom";
 
 const NewPatient = () => {
-  const { addPatient } = useContext(Patient);
-  const [patientProfileData, setPatientProfileData] = useState([]);
+  const { addPatient, editPatient } = useContext(Patient);
+  const { state } = useLocation();
+
+  const [patientProfileData, setPatientProfileData] = useState(
+    state ? state : []
+  );
 
   const handelChange = (e) => {
     let { name, value } = e.target;
@@ -14,18 +19,16 @@ const NewPatient = () => {
     });
   };
 
-  useEffect(() => {
-    console.log(patientProfileData);
-  }, [patientProfileData]);
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    state ? editPatient(patientProfileData) : addPatient(patientProfileData);
+  };
+
   return (
     <>
       <div className="container m-auto ">
         <h1 className="py-4 text-xl text-center border-b">Add New Patient</h1>
-        <form
-          action=""
-          method="post"
-          onSubmit={(e) => addPatient(e, patientProfileData)}
-        >
+        <form action="" method="post" onSubmit={handelSubmit}>
           <TextInput
             type={"text"}
             title={"name"}
@@ -44,7 +47,10 @@ const NewPatient = () => {
             handelChange={handelChange}
             value={patientProfileData}
           />
-          <Radio handelChange={handelChange} />
+          <Radio
+            handelChange={handelChange}
+            value={patientProfileData.gender}
+          />
           <TextInput
             type={"text"}
             title={"nature Of Working"}
@@ -113,7 +119,7 @@ export function TextareaInput({ title, handelChange, value, name, required }) {
       </label>
       <textarea
         name={inputName}
-        className="w-full px-3 border border-gray-300 rounded-md outline-none min-h-[70px] resize-none"
+        className="w-full p-3 border border-gray-300 rounded-md outline-none min-h-[70px] resize-none"
         value={value[inputName] || ""}
         onChange={(e) => handelChange(e)}
         required={required || false}

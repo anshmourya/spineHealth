@@ -1,7 +1,6 @@
 import "./Radio.css";
-const Radio = ({ handelChange }) => {
+const Radio = ({ handelChange, value }) => {
   const handelRadioChange = (e) => handelChange(e);
-
   return (
     <>
       <div className="m-auto my-3 text-gray-500 radio-input">
@@ -11,8 +10,9 @@ const Radio = ({ handelChange }) => {
             id="value-1"
             name="gender"
             value="male"
-            onClick={handelRadioChange}
+            onChange={handelRadioChange}
             required
+            defaultChecked={value === "male"}
           />
           <span>Male</span>
         </label>
@@ -22,8 +22,9 @@ const Radio = ({ handelChange }) => {
             id="value-2"
             name="gender"
             value="female"
-            onClick={handelRadioChange}
+            onChange={handelRadioChange}
             required
+            defaultChecked={value === "female"}
           />
           <span>Female</span>
         </label>

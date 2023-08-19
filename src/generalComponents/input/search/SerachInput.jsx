@@ -9,7 +9,7 @@ const SerachInput = ({ value, onChangeAction, clearInput }) => {
       <AiOutlineSearch className="text-xl max-md:text-lg" />
       <input
         type="text"
-        placeholder="Search within menu"
+        placeholder="Search within pateint"
         className="outline-none md:text-lg"
         value={value || ""}
         onChange={onChangeAction}

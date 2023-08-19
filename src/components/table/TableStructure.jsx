@@ -1,12 +1,17 @@
 //icons
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Modal from "../../generalComponents/modal/Modal";
 
-const TableStructure = ({ patientData, deleteData, Header, TableDataView }) => {
+const TableStructure = ({
+  patientData,
+  deleteData,
+  Header,
+  TableDataView,
+  editNavigationLink,
+}) => {
   return (
     <>
-      <div className="container m-auto">
+      <div className="container m-auto my-10">
         <table>
           <thead className="border-b ">
             <tr>
@@ -15,6 +20,8 @@ const TableStructure = ({ patientData, deleteData, Header, TableDataView }) => {
                   {head}
                 </th>
               ))}
+              <th>edit</th>
+              <th>delete</th>
             </tr>
           </thead>
           <tbody>
@@ -40,12 +47,21 @@ const TableStructure = ({ patientData, deleteData, Header, TableDataView }) => {
                     </td>
                   );
                 })}
+
+                {/* //edit the data */}
+
+                <td data-label="Edit" className="justify-between max-md:flex">
+                  <Link to={editNavigationLink} state={pateintData}>
+                    <MdOutlineDeleteOutline className="text-lg cursor-pointer md:m-auto" />
+                  </Link>
+                </td>
+                {/* //delete the data */}
                 <td
                   data-label="Delete"
-                  className="flex items-center justify-between lg:justify-center"
-                  onClick={() => deleteData(pateintData.id)}
+                  className="justify-between max-md:flex"
+                  onClick={() => deleteData(pateintData)}
                 >
-                  <MdOutlineDeleteOutline className="text-lg cursor-pointer " />
+                  <MdOutlineDeleteOutline className="text-lg cursor-pointer md:m-auto" />
                 </td>
               </tr>
             ))}
