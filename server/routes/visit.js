@@ -12,15 +12,18 @@ const uniqid = require('uniqid'); //user to generate unique identifier key
 
 //get all the visit of the particular patient
 router.get("/visit/:id", async (req, res) => {
-
+    const patient = user.doc(req.user).collection("patient")
     try {
         const { id: patientId } = req.params
 
-        const patientRef = await user.doc(patientId).collection("visit").get();
+        const patientRef = await patient.doc(patientId).collection("visit").get();
         const response = patientRef.docs.map((doc) => doc.data())
 
         res.status(200).json({
             error: null,
+
+
+            
             message: "successfully retrived patient visit",
             data: response
         })
@@ -37,9 +40,10 @@ router.get("/visit/:id", async (req, res) => {
 
 //get particular visit of the particular patient
 router.get("/visit/:id/:visitId", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
     try {
         const { id: patientId, visitId } = req.params
-        const response = (await user.doc(patientId).collection("visit").doc(visitId).get()).data()
+        const response = (await patient.doc(patientId).collection("visit").doc(visitId).get()).data()
 
         res.status(200).json({
             error: null,
@@ -61,7 +65,7 @@ router.get("/visit/:id/:visitId", async (req, res) => {
 
 //add new vist to the database
 router.post("/visit", async (req, res) => {
-    console.log(req.body);
+    const patient = user.doc(req.user).collection("patient")
     try {
         const { id: patientId, ...visitData } = req.body
         //vistData is consist of {nature of disease , medication given , note[if any]}
@@ -72,7 +76,7 @@ router.post("/visit", async (req, res) => {
             timeOfVisit: getCurrentTimeAndDate()
         }
 
-        const vistRef = user.doc(patientId).collection("visit") //creating the new collection
+        const vistRef = patient.doc(patientId).collection("visit") //creating the new collection
         await vistRef.doc(visitId).set(newVisit)
 
         res.status(200).json({
@@ -94,11 +98,12 @@ router.post("/visit", async (req, res) => {
 
 //edit the existing visit or update the existing of the patient
 router.put("/visit/:patientId/:visitId", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
     try {
         const { patientId, visitId } = req.params
 
 
-        const patientRef = user.doc(patientId).collection("visit").doc(visitId);
+        const patientRef = patient.doc(patientId).collection("visit").doc(visitId);
         await patientRef.update(req.body);
 
         res.status(200).json({
@@ -119,11 +124,12 @@ router.put("/visit/:patientId/:visitId", async (req, res) => {
 
 //deleting the vist of the existing patient
 router.delete("/visit/:id/:visitId", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
 
     try {
         const { id: patientId, visitId } = req.params;
         console.log(patientId, visitId);
-        const pateintRef = user.doc(patientId).collection("visit").doc(visitId);
+        const pateintRef = patient.doc(patientId).collection("visit").doc(visitId);
         await pateintRef.delete();
 
         res.status(200).json({

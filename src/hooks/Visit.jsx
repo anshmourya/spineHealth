@@ -15,7 +15,8 @@ export const VisitDataProvider = ({ children }) => {
         {
           ...newVisit,
           id: pateintID,
-        }
+        },
+        { withCredentials: true }
       );
 
       response.data.error
@@ -31,7 +32,8 @@ export const VisitDataProvider = ({ children }) => {
   const VisitView = async (patientId) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/visit/${patientId}`
+        `${import.meta.env.VITE_SERVER_URL}/visit/${patientId}`,
+        { withCredentials: true }
       );
       return response.data.data;
     } catch (error) {
@@ -44,7 +46,8 @@ export const VisitDataProvider = ({ children }) => {
     try {
       const response = await axios.put(
         `${import.meta.env.VITE_SERVER_URL}/visit/${patientId}/${visitId}`,
-        editVistData
+        editVistData,
+        { withCredentials: true }
       );
 
       response.data.error
@@ -60,7 +63,8 @@ export const VisitDataProvider = ({ children }) => {
   const deleteVisit = async (patientId, visitId) => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_SERVER_URL}/visit/${patientId}/${visitId}`
+        `${import.meta.env.VITE_SERVER_URL}/visit/${patientId}/${visitId}`,
+        { withCredentials: true }
       );
 
       response.data.error

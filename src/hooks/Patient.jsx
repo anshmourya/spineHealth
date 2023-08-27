@@ -13,7 +13,8 @@ export const PatientDataProvider = ({ children }) => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER_URL}/patient`,
-        NewPatient
+        NewPatient,
+        { withCredentials: true }
       );
 
       response.data.error
@@ -30,7 +31,8 @@ export const PatientDataProvider = ({ children }) => {
     console.log("calling getAllPatients");
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/patient`
+        `${import.meta.env.VITE_SERVER_URL}/patient`,
+        { withCredentials: true }
       );
 
       setPaientData(response.data.data);
@@ -44,7 +46,8 @@ export const PatientDataProvider = ({ children }) => {
     try {
       const response = await axios.put(
         `${import.meta.env.VITE_SERVER_URL}/patient`,
-        editPatientData
+        editPatientData,
+        { withCredentials: true }
       );
 
       response.data.error
@@ -60,7 +63,8 @@ export const PatientDataProvider = ({ children }) => {
   const deletePatient = async (pateintID) => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_SERVER_URL}/patient/${pateintID}`
+        `${import.meta.env.VITE_SERVER_URL}/patient/${pateintID}`,
+        { withCredentials: true }
       );
 
       response.data.error ? new Error(response.data.error) : getAllPatients();

@@ -6,15 +6,46 @@ import NewPatient from "./pages/newPatient/NewPatient";
 import Visit from "./pages/patientVist/Visit";
 import VisitView from "./pages/visitView/VisitView";
 import { ToastContainer } from "react-toastify";
+import Login from "./pages/login/Login";
+import PrivatePage from "./components/privateRoute/PrivatePage"; // Import PrivatePage component
 
 const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/newPatient" element={<NewPatient />} />
-        <Route path="/visit/:id" element={<Visit />} />
-        <Route path="/visitView" element={<VisitView />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <PrivatePage>
+              <Home />
+            </PrivatePage>
+          }
+        />
+        <Route
+          path="/newPatient"
+          element={
+            <PrivatePage>
+              <NewPatient />
+            </PrivatePage>
+          }
+        />
+        <Route
+          path="/visit/:id"
+          element={
+            <PrivatePage>
+              <Visit />
+            </PrivatePage>
+          }
+        />
+        <Route
+          path="/visitView"
+          element={
+            <PrivatePage>
+              <VisitView />
+            </PrivatePage>
+          }
+        />
       </Routes>
       <ToastContainer />
     </>

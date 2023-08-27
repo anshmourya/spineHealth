@@ -11,8 +11,9 @@ const uniqid = require('uniqid'); //user to generate unique identifier key
 //getting all the patient from the database
 router.get("/patient", async (req, res) => {
     console.log("get pateint is calling.");
+    const patient = user.doc(req.user).collection("patient")
     try {
-        const userRef = await user.get(); //getting all the user references id from the database
+        const userRef = await patient.get(); //getting all the user references id from the database
 
         const respsone = userRef.docs.map((doc) => {
             return { id: doc.id, ...doc.data() }
@@ -36,10 +37,11 @@ router.get("/patient", async (req, res) => {
 
 //router to get the specfic pateint data.
 router.get("/patient/:id", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
     try {
 
         const { id: patientId } = req.params
-        const response = (await user.doc(patientId).get()).data()
+        const response = (await patient.doc(patientId).get()).data()
 
 
         res.status(200).json({
@@ -61,6 +63,7 @@ router.get("/patient/:id", async (req, res) => {
 })
 //add data to the database
 router.post("/patient", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
     const { phoneNumber, ...patientData } = req.body;
 
     //patientData is consists of {name , age , phoneNumber , gender , nature of disease , medication given , history of disease[if any], note[if any]}    
@@ -75,7 +78,7 @@ router.post("/patient", async (req, res) => {
     console.log(phoneNumber);
     try {
         //waiting for the patient to be added [using phoneNumber as id cuz it always be unique]
-        await user.doc(PatientId).set(newPatient);
+        await patient.doc(PatientId).set(newPatient);
 
         res.status(200).json({
             error: null,
@@ -94,10 +97,11 @@ router.post("/patient", async (req, res) => {
 
 //updating the existing patient information / adding new vist of the existing patient
 router.put("/patient", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
     console.log("update patient is calling");
     try {
         const { id: PatientId, ...updatedData } = req.body;
-        await user.doc(PatientId).update(updatedData);
+        await patient.doc(PatientId).update(updatedData);
         res.status(200).json({
             error: null,
             message: "Patient updated successfully.",
@@ -115,10 +119,11 @@ router.put("/patient", async (req, res) => {
 
 //delete the existing patient information from the database
 router.delete("/patient/:id", async (req, res) => {
+    const patient = user.doc(req.user).collection("patient")
     try {
         const { id: PatientId } = req.params
         console.log(PatientId);
-        await user.doc(PatientId).delete()
+        await patient.doc(PatientId).delete()
 
         res.status(200).json({
             error: null,

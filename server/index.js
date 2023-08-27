@@ -5,23 +5,21 @@ const port = 4000
 
 //setting up the cors middleware
 const cors = require("cors")
-app.use(cors({
-    origin: process.env.CLIENT_URL
-}))
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true'); // Set the header to 'true'
-    next();
-});
+
+app.use(cors({ credentials: true, origin: true }));
 
 app.use(express.json())
-
 //router routes
 const patients = require("./routes/patient")
 const visit = require("./routes/visit")
+const User = require("./auth/user")
+
+
+
+
+//login
+app.use(User)
 
 //patients routes
 app.use(patients);
