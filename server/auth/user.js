@@ -7,9 +7,10 @@ const cookieSession = require('cookie-session');
 router.use(cookieSession({
     name: 'auth-data',
     keys: [process.env.COOKIE_PRIVATE_KEY],
-
-    // Cookie Options
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    sameSite: true,
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    resave: false,
+    saveUninitialized: false,
 }));
 
 // Use passport middleware
@@ -44,6 +45,7 @@ router.post("/login", passport.authenticate("local", { 'session': true, }), (req
 
 // Logout route
 router.get("/logout", (req, res) => {
+    req.session = null
     req.logOut();
     res.send("logOut");
 });
