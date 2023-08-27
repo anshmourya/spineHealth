@@ -68,9 +68,12 @@ const Home = () => {
 
 export default Home;
 
-export function CreateButton({ title }) {
+export function CreateButton({ title, disable }) {
   return (
-    <button className=" h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-orange-400 text-white capitalize">
+    <button
+      className=" h-[37px] p-2 rounded-lg text-sm flex items-center gap-2 bg-orange-400 text-white capitalize"
+      disabled={disable}
+    >
       {title} <AiOutlinePlus className="text-white" />
     </button>
   );

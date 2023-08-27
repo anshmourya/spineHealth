@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 //compoent
-import SerachInput from "../../generalComponents/input/search/SerachInput";
 import Modal from "../../generalComponents/modal/Modal";
 import TableStructure from "../../components/table/TableStructure";
 import { VisitData } from "../../hooks/Visit";
@@ -92,7 +91,6 @@ const VisitView = () => {
           <Link to={`/visit/${pateintId}`}>
             <CreateButton title={"create New Visit"} />
           </Link>
-          <SerachInput />
         </div>
         {/* //table view  */}
         {visit && (

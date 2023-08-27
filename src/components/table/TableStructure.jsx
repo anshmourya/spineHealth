@@ -1,5 +1,6 @@
 //icons
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { BiEditAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const TableStructure = ({
@@ -52,7 +53,7 @@ const TableStructure = ({
 
                 <td data-label="Edit" className="justify-between max-md:flex">
                   <Link to={editNavigationLink} state={pateintData}>
-                    <MdOutlineDeleteOutline className="text-lg cursor-pointer md:m-auto" />
+                    <BiEditAlt className="text-lg cursor-pointer md:m-auto" />
                   </Link>
                 </td>
                 {/* //delete the data */}

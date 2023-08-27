@@ -1,11 +1,18 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 //component
 import { TextInput, TextareaInput } from "../newPatient/NewPatient";
 import { VisitData } from "../../hooks/Visit";
 
 //component
 const Visit = () => {
+  const {
+    handleSubmit,
+    formState: { errors },
+    control,
+  } = useForm();
+
   const { id } = useParams();
   const { addVisit, editVisit } = useContext(VisitData);
   const navigate = useNavigate();
@@ -13,16 +20,9 @@ const Visit = () => {
 
   const [newVisit, setNewVisit] = useState(state ? state : {});
 
-  const handelChange = (e) => {
-    let { name, value } = e.target;
-    setNewVisit((prev) => {
-      return { ...prev, [name]: value };
-    });
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    state ? editVisit(newVisit, id, state.visitId) : addVisit(newVisit, id);
+  const onSubmit = (data) => {
+    const newData = { ...newVisit, ...data };
+    state ? editVisit(newData, id, state.visitId) : addVisit(newData, id);
   };
 
   // const textInputHeader = [
@@ -33,8 +33,8 @@ const Visit = () => {
   // ];
 
   const textareaInputHeader = [
-    { title: "reason For Visit" },
-    { title: "prescribed Medications" },
+    { title: "reason For Visit", name: "reasonForVisit" },
+    { title: "prescribed Medications", name: "prescribedMedications" },
     { title: "Note (If Any)", name: "notes" },
   ];
 
@@ -43,26 +43,15 @@ const Visit = () => {
       <>
         <h1 className="py-4 text-xl text-center border-b">Visit</h1>
         <div className="container m-auto">
-          <form action="" method="post" onSubmit={onSubmit}>
-            {/* {textInputHeader.map((textInput, index) => (
-              <TextInput
-                key={index}
-                title={textInput.title}
-                type={textInput.type}
-                value={newVisit}
-                required={true}
-                handelChange={handelChange}
-              />
-            ))} */}
-
+          <form action="" method="post" onSubmit={handleSubmit(onSubmit)}>
             {textareaInputHeader.map((textareaInput, index) => (
               <TextareaInput
                 key={index}
                 title={textareaInput.title}
                 name={textareaInput.name}
-                value={newVisit}
-                handelChange={handelChange}
-                required={true}
+                control={control}
+                errors={errors}
+                patientProfileData={newVisit}
               />
             ))}
             <button

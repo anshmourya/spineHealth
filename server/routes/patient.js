@@ -10,6 +10,7 @@ const uniqid = require('uniqid'); //user to generate unique identifier key
 
 //getting all the patient from the database
 router.get("/patient", async (req, res) => {
+    console.log("get pateint is calling.");
     try {
         const userRef = await user.get(); //getting all the user references id from the database
 
@@ -93,6 +94,7 @@ router.post("/patient", async (req, res) => {
 
 //updating the existing patient information / adding new vist of the existing patient
 router.put("/patient", async (req, res) => {
+    console.log("update patient is calling");
     try {
         const { id: PatientId, ...updatedData } = req.body;
         await user.doc(PatientId).update(updatedData);
