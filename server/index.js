@@ -8,9 +8,15 @@ app.set("trust proxy", 1);
 const cors = require("cors")
 
 app.use(cors({ credentials: true, origin: true }));
+// enable the "secure" flag on the sessionCookies object
 
 app.use(express.json())
 //router routes
+app.use((req, res, next) => {
+    req["sessionCookies"].secure = true;
+    next();
+});
+
 const patients = require("./routes/patient")
 const visit = require("./routes/visit")
 const User = require("./auth/user")
