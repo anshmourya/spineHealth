@@ -4,8 +4,8 @@ const app = express()
 const port = 4000
 
 //setting up the cors middleware
+app.set("trust proxy", 1);
 const cors = require("cors")
-
 
 app.use(cors({ credentials: true, origin: true }));
 
