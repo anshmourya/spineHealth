@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const passport = require("./passport");
-const cookieSession = require('cookie-session');
+const session = require("express-session")
 
 // Use cookieSession middleware
-router.use(cookieSession({
-    name: 'auth-data',
-    keys: [process.env.COOKIE_PRIVATE_KEY],
-    sameSite: true,
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+router.use(session({
+    name: 'auth-id',
+    secret: process.env.COOKIE_PRIVATE_KEY,
     resave: false,
-    saveUninitialized: false,
-    secure: true
-}));
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days in milliseconds
+    }
+}))
 
 // Use passport middleware
 router.use(passport.initialize());
@@ -46,9 +46,14 @@ router.post("/login", passport.authenticate("local", { 'session': true, }), (req
 
 // Logout route
 router.get("/logout", (req, res) => {
-    req.session = null
-    req.logOut();
-    res.send("logOut");
+    req.session.destroy((error) => {
+        if (error) {
+            console.error("Error destroying session:", error);
+        } else {
+            req.logOut();
+            res.send("logOut");
+        }
+    });
 });
 
 module.exports = router;

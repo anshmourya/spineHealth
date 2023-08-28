@@ -4,7 +4,7 @@ const app = express()
 const port = 4000
 
 //setting up the cors middleware
-app.set("trust proxy", 1);
+
 const cors = require("cors")
 
 app.use(cors({ credentials: true, origin: true }));
@@ -12,10 +12,7 @@ app.use(cors({ credentials: true, origin: true }));
 
 app.use(express.json())
 //router routes
-app.use((req, res, next) => {
-    req["sessionCookies"].secure = true;
-    next();
-});
+
 
 const patients = require("./routes/patient")
 const visit = require("./routes/visit")
