@@ -7,7 +7,9 @@ const port = 4000
 
 const cors = require("cors")
 
-app.use(cors({ credentials: true, origin: true }));
+app.use(
+    cors({ credentials: true, origin: true, exposedHeaders: ["Set-Cookie"] })
+);
 // enable the "secure" flag on the sessionCookies object
 
 app.use(express.json())
