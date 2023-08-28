@@ -6,7 +6,7 @@ const port = 4000
 //setting up the cors middleware
 
 const cors = require("cors")
-
+app.set("trust proxy", 1);
 app.use(
     cors({ credentials: true, origin: true, exposedHeaders: ["Set-Cookie"] })
 );
