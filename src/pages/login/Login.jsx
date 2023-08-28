@@ -13,12 +13,11 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     await getLogin(data);
-    console.log(data);
   };
   return (
     <>
-      <div className="bg-black h-screen">
-        <div className="login-box border">
+      <div className="h-screen bg-black">
+        <div className="border login-box">
           <p>Login</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="user-box">
