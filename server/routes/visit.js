@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //database modules
-const user = require("../database/firebaseConfig")
+const { user } = require("../database/firebaseConfig")
 
 
 //helper functions
@@ -23,7 +23,7 @@ router.get("/visit/:id", async (req, res) => {
             error: null,
 
 
-            
+
             message: "successfully retrived patient visit",
             data: response
         })

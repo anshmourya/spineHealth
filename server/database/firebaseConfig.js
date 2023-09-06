@@ -20,4 +20,4 @@ let user = db.collection("user");
 
 
 
-module.exports = user;
+module.exports = { user, db };

@@ -16,9 +16,10 @@ app.use(express.json())
 //router routes
 
 
-const patients = require("./routes/patient")
-const visit = require("./routes/visit")
-const User = require("./auth/user")
+const patients = require("./routes/patient");
+const visit = require("./routes/visit");
+const User = require("./auth/user");
+const BulkData = require("./routes/BulkData");
 
 
 
@@ -31,6 +32,9 @@ app.use(patients);
 
 //visit route
 app.use(visit)
+
+//bulk data 
+app.use(BulkData)
 
 
 

@@ -7,8 +7,9 @@ import SearchPatient from "../../generalComponents/SearchPatient";
 
 //icons
 import { AiOutlinePlus } from "react-icons/ai";
-import Loader from "../../components/loader/Loader";
+import Loader from "../../components/loader/loaderOne/Loader";
 import { Link } from "react-router-dom";
+import Excel from "../../components/excel/Excel";
 
 const Home = () => {
   const { patientData, getAllPatients, deletePatient } = useContext(Patient);
@@ -37,7 +38,7 @@ const Home = () => {
     <>
       {patientData && (
         <>
-          <div className="container flex justify-between m-auto my-5">
+          <div className="container flex items-center justify-between m-auto my-5">
             <SearchPatient
               patientData={patientData}
               setPatientToDisplay={setPatientToDisplay}
@@ -47,6 +48,7 @@ const Home = () => {
                 <CreateButton title={"create new Patient"} />
               </Link>
             </div>
+            <Excel />
           </div>
 
           {patientToDisplay.length > 0 ? (

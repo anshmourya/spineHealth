@@ -8,6 +8,7 @@ import VisitView from "./pages/visitView/VisitView";
 import { ToastContainer } from "react-toastify";
 import Login from "./pages/login/Login";
 import PrivatePage from "./components/privateRoute/PrivatePage"; // Import PrivatePage component
+import Event from "./pages/event/Event";
 
 const App = () => {
   return (
@@ -43,6 +44,14 @@ const App = () => {
           element={
             <PrivatePage>
               <VisitView />
+            </PrivatePage>
+          }
+        />
+        <Route
+          path="/event"
+          element={
+            <PrivatePage>
+              <Event />
             </PrivatePage>
           }
         />

@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true,
         }
       );
-      console.log(res.data);
       if (res.data) setuser(res.data.user);
     } catch (error) {
       console.error("Couldn't get user");

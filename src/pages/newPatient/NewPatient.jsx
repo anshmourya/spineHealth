@@ -7,20 +7,21 @@ import { useLocation } from "react-router-dom";
 import { CreateButton } from "../home/Home";
 
 const NewPatient = () => {
+  //hooks
   const { addPatient, editPatient } = useContext(Patient);
   const { state } = useLocation();
-
-  const [patientProfileData, setPatientProfileData] = useState(
-    state ? state : []
-  );
-  const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     formState: { errors },
     control,
     register,
   } = useForm();
-
+  //states
+  const [patientProfileData, setPatientProfileData] = useState(
+    state ? state : []
+  );
+  const [loading, setLoading] = useState(false);
+  //functions
   const handelSubmit = async (data) => {
     setLoading(true);
     const newData = await { ...patientProfileData, ...data };

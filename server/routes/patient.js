@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //database modules
-const user = require("../database/firebaseConfig")
+const { user } = require("../database/firebaseConfig")
 
 //helper functions
 const { getCurrentTimeAndDate } = require("../helper/helperFunction")
