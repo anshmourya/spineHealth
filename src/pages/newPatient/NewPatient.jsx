@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Patient } from "../../hooks/Patient";
 import Radio from "../../generalComponents/input/radio/Radio";
 import { useLocation } from "react-router-dom";
-import { CreateButton } from "../home/Home";
+import { CreateButton } from "../dashboard/Dashboard";
 
 const NewPatient = () => {
   //hooks

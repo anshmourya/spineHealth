@@ -36,20 +36,17 @@ export const AuthProvider = ({ children }) => {
         }
       );
       alert(res.data.message);
-      if (res.data) navigate("/");
+      if (res.data) navigate("/dashboard");
     } catch (error) {
       console.error("Couldn't get user");
       alert("Couldn't get user try again");
       navigate("/login");
     }
   };
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <Auth.Provider value={{ user, getUser, getLogin }}>
       {children}

@@ -1,0 +1,35 @@
+.primary-color {
+    color: #f68b1f;
+}
+
+.primary-bg {
+    background: #f68b1f;
+}
+
+.active {
+    color: #f68b1f;
+    border-bottom: 2px solid #f68b1f;
+}
+
+.highlight-text {
+    color: transparent;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 5px;
+}
+
+// pages
+//home
+@import "../pages/home/home";
+
+//topHeader
+@import "../components/landingPage/navbar/topHeader/TopHeader";
+
+//topHeader
+@import "../components/landingPage/navbar/mainHeader/MainHeader";
+
+//sectionHeader
+@import "../components/landingPage/sectionHeader/SectionHeader";
+
+@import "../components/landingPage/inputs/primaryInput/PrimaryInput";
+
+@import "../components/landingPage/inputs/primaryTeaxtarea/primaryTextarea";

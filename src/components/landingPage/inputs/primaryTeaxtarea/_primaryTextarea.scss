@@ -1,0 +1,25 @@
+.primary-textInput {
+    label {
+        font-size: 18px;
+        font-weight: 600;
+        color: #666;
+        text-transform: capitalize;
+    }
+
+    textarea {
+        resize: none;
+        display: block;
+        width: 100%;
+        color: #111;
+        border: 1px solid #eaeaea;
+        border-radius: 7px;
+        outline: none;
+        padding: 10px 15px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    textarea:focus {
+        border: 1px solid #f68b1f;
+    }
+}

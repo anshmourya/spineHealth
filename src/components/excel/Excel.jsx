@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 //components
-import { CreateButton } from "../../pages/home/Home";
+import { CreateButton } from "../../pages/dashboard/Dashboard";
 //hooks
 import * as XLSX from "xlsx";
 import { useForm } from "react-hook-form";

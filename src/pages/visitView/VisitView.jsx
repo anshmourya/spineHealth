@@ -5,7 +5,7 @@ import { useLocation, Link } from "react-router-dom";
 import Modal from "../../generalComponents/modal/Modal";
 import TableStructure from "../../components/table/TableStructure";
 import { VisitData } from "../../hooks/Visit";
-import { CreateButton } from "../home/Home";
+import { CreateButton } from "../dashboard/Dashboard";
 
 const VisitView = () => {
   const { VisitView, deleteVisit } = useContext(VisitData);

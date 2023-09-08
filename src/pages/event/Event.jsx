@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 //components
 import { Sidebar } from "flowbite-react";
 import { TextInput, TextareaInput } from "../newPatient/NewPatient";
-import { CreateButton } from "../home/Home";
+import { CreateButton } from "../dashboard/Dashboard";
 
 const Event = () => {
   //hooks
