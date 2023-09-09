@@ -20,16 +20,15 @@
 // pages
 //home
 @import "../pages/home/home";
-
 //topHeader
 @import "../components/landingPage/navbar/topHeader/TopHeader";
-
 //topHeader
 @import "../components/landingPage/navbar/mainHeader/MainHeader";
-
 //sectionHeader
 @import "../components/landingPage/sectionHeader/SectionHeader";
-
+//primary InputField
 @import "../components/landingPage/inputs/primaryInput/PrimaryInput";
-
+//primary textarea input
 @import "../components/landingPage/inputs/primaryTeaxtarea/primaryTextarea";
+//secondary button
+@import "../components/landingPage/buttons/secondaryButton/SecondaryButton";

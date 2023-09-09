@@ -1,12 +1,14 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-const PrimaryInput = () => {
+const PrimaryInput = forwardRef(({ label, ...rest }, ref) => {
   return (
     <div className="primary-input">
-      <label>Full Name</label>
-      <input type="text" />
+      <label>{label}</label>
+      <input type="text" ref={ref} {...rest} />
     </div>
   );
-};
+});
+
+PrimaryInput.displayName = "PrimaryInput";
 
 export default PrimaryInput;

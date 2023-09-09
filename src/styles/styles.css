@@ -383,6 +383,7 @@ ul {
   font-size: 18px;
   font-weight: 600;
   color: #666;
+  text-transform: capitalize;
 }
 .primary-input input {
   display: block;
@@ -420,4 +421,21 @@ input:focus {
 }
 .primary-textInput textarea:focus {
   border: 1px solid #f68b1f;
+}
+
+.secondaryButton {
+  color: #ecf0f1;
+  font-size: 17px;
+  background-color: #e67e22;
+  border: 1px solid #f39c12;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 6px 0px #d35400;
+  transition: all 0.1s;
+}
+
+.secondaryButton:active {
+  box-shadow: 0px 2px 0px #d35400;
+  position: relative;
+  top: 3px;
 }/*# sourceMappingURL=styles.css.map */
