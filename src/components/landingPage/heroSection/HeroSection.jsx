@@ -3,6 +3,7 @@ import Typed from "typed.js";
 import shape1 from "../../../assets/images/shape1.svg";
 
 import PrimaryButton from "../buttons/primaryButton/PrimaryButton";
+import { Link } from "react-scroll";
 
 const HeroSection = () => {
   const el = useRef(null);
@@ -47,7 +48,9 @@ const HeroSection = () => {
           the disease. <br /> Treatment without prevention is simply
           unsustainable.
         </p>
-        <PrimaryButton title={"appointment"} size={"lg"} />
+        <Link to="contactUs" smooth spy>
+          <PrimaryButton title={"appointment"} size={"lg"} />
+        </Link>
       </div>
     </section>
   );

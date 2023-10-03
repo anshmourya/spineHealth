@@ -94,9 +94,15 @@ const ContactUs = () => {
               name={input.name}
               control={control}
               defaultValue=""
-              render={({ field }) => (
+              render={({ field: { onChange, ...rest } }) => (
                 <div>
-                  <PrimaryInput label={input.label} {...field} />
+                  <PrimaryInput
+                    label={input.label}
+                    {...rest}
+                    onChange={(date) => {
+                      onChange(date?.isValid ? date : "");
+                    }}
+                  />
                   <p className="text-red-500">{errors[input.name]?.message}</p>
                 </div>
               )}

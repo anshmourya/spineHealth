@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 //component
 import { TextInput, TextareaInput } from "../newPatient/NewPatient";
 import { VisitData } from "../../hooks/Visit";
+import PrimaryButton from "../../components/landingPage/buttons/primaryButton/PrimaryButton";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 //component
 const Visit = () => {
@@ -41,8 +43,18 @@ const Visit = () => {
   return (
     <>
       <>
-        <h1 className="py-4 text-xl text-center border-b">Visit</h1>
         <div className="container m-auto">
+          <div className="flex items-center justify-around">
+            <PrimaryButton
+              title={<IoMdArrowRoundBack />}
+              hanelClick={() => navigate(-1)}
+            />
+            <h1 className="flex-1 py-4 text-xl text-center border-b">
+              {Object.keys(newVisit).length > 0
+                ? "Edit visit"
+                : "Add New visit"}
+            </h1>
+          </div>
           <form action="" method="post" onSubmit={handleSubmit(onSubmit)}>
             {textareaInputHeader.map((textareaInput, index) => (
               <TextareaInput

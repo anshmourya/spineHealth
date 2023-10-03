@@ -1,13 +1,17 @@
 import { useState, useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 //component
 import { Patient } from "../../hooks/Patient";
 import Radio from "../../generalComponents/input/radio/Radio";
 import { useLocation } from "react-router-dom";
 import { CreateButton } from "../dashboard/Dashboard";
+import PrimaryButton from "../../components/landingPage/buttons/primaryButton/PrimaryButton";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const NewPatient = () => {
   //hooks
+  const navigate = useNavigate();
   const { addPatient, editPatient } = useContext(Patient);
   const { state } = useLocation();
   const {
@@ -32,7 +36,17 @@ const NewPatient = () => {
   return (
     <>
       <div className="container m-auto">
-        <h1 className="py-4 text-xl text-center border-b">Add New Patient</h1>
+        <div className="flex items-center justify-around">
+          <PrimaryButton
+            title={<IoMdArrowRoundBack />}
+            hanelClick={() => navigate(-1)}
+          />
+          <h1 className="flex-1 py-4 text-xl text-center border-b">
+            {Object.keys(patientProfileData).length > 0
+              ? "Edit Patient"
+              : "Add New Patient"}
+          </h1>
+        </div>
         <form onSubmit={handleSubmit(handelSubmit)}>
           <TextInput
             type={"text"}
@@ -97,7 +111,14 @@ const NewPatient = () => {
             errors={errors}
           />
 
-          <CreateButton title={"Create Patient"} disable={loading} />
+          <CreateButton
+            title={
+              Object.keys(patientProfileData).length > 0
+                ? "Edit Patient"
+                : "Add New Patient"
+            }
+            disable={loading}
+          />
         </form>
       </div>
     </>
