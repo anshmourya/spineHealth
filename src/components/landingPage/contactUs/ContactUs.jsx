@@ -23,6 +23,7 @@ const ContactUs = () => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
@@ -62,6 +63,7 @@ const ContactUs = () => {
         const response = await window.Email.send(emailConfig);
         console.log(response);
         response && success("Appointment request sent, expect our call soon.");
+        reset();
       }
     } catch (error) {
       console.log(error);
@@ -94,15 +96,9 @@ const ContactUs = () => {
               name={input.name}
               control={control}
               defaultValue=""
-              render={({ field: { onChange, ...rest } }) => (
+              render={({ field }) => (
                 <div>
-                  <PrimaryInput
-                    label={input.label}
-                    {...rest}
-                    onChange={(date) => {
-                      onChange(date?.isValid ? date : "");
-                    }}
-                  />
+                  <PrimaryInput label={input.label} {...field} />
                   <p className="text-red-500">{errors[input.name]?.message}</p>
                 </div>
               )}

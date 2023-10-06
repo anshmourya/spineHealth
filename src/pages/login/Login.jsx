@@ -16,7 +16,7 @@ const Login = () => {
   };
   return (
     <>
-      <div className="h-screen bg-black">
+      <div className="h-screen bg-white">
         <div className="border login-box">
           <p>Login</p>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,13 +60,12 @@ const Login = () => {
               Submit
             </button>
           </form>
-          <p>
+          {/* <p>
             Don&apost have an account?{" "}
             <a href="" className="a2">
               Sign up!
             </a>
-          </p>
-        </div>
+          </p> */}        </div>
       </div>
     </>
   );
