@@ -75,7 +75,7 @@ const ContactUs = () => {
     { label: "phone number", name: "phoneNumber" },
   ];
   return (
-    <section className="container relative m-auto" id="contactUs">
+    <section className="container relative m-auto p-5" id="contactUs">
       <SectionHeader title={"book an appointment"} />
       <div className="shape-1">
         <img src={shape1} alt="" />
@@ -87,7 +87,7 @@ const ContactUs = () => {
         className="max-w-[1100px] mx-auto my-12"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="grid grid-cols-2 gap-11 ">
+        <div className="grid grid-cols-1 gap-11 md:grid-cols-2 ">
           {Form.map((input, index) => (
             <Controller
               key={index}

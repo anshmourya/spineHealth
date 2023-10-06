@@ -1,17 +1,14 @@
+import { Goback } from "../../components/landingPage/buttons/Goback/Goback";
 import { useState, useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 //component
 import { Patient } from "../../hooks/Patient";
 import Radio from "../../generalComponents/input/radio/Radio";
 import { useLocation } from "react-router-dom";
 import { CreateButton } from "../dashboard/Dashboard";
-import PrimaryButton from "../../components/landingPage/buttons/primaryButton/PrimaryButton";
-import { IoMdArrowRoundBack } from "react-icons/io";
 
 const NewPatient = () => {
   //hooks
-  const navigate = useNavigate();
   const { addPatient, editPatient } = useContext(Patient);
   const { state } = useLocation();
   const {
@@ -37,10 +34,7 @@ const NewPatient = () => {
     <>
       <div className="container m-auto">
         <div className="flex items-center justify-around">
-          <PrimaryButton
-            title={<IoMdArrowRoundBack />}
-            hanelClick={() => navigate(-1)}
-          />
+          <Goback />
           <h1 className="flex-1 py-4 text-xl text-center border-b">
             {Object.keys(patientProfileData).length > 0
               ? "Edit Patient"

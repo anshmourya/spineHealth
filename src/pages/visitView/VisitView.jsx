@@ -6,6 +6,7 @@ import Modal from "../../generalComponents/modal/Modal";
 import TableStructure from "../../components/table/TableStructure";
 import { VisitData } from "../../hooks/Visit";
 import { CreateButton } from "../dashboard/Dashboard";
+import { Goback } from "../../components/landingPage/buttons/Goback/Goback";
 
 const VisitView = () => {
   const { VisitView, deleteVisit } = useContext(VisitData);
@@ -59,6 +60,7 @@ const VisitView = () => {
     <>
       <div className="px-2 content">
         <div className="flex items-center justify-between capitalize cursor-pointer mt-9">
+          <Goback />
           <h1 className="text-lg font-semibold leading-3 lg:text-2xl ">
             {name}
           </h1>

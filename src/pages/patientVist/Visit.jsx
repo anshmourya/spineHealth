@@ -6,6 +6,7 @@ import { TextInput, TextareaInput } from "../newPatient/NewPatient";
 import { VisitData } from "../../hooks/Visit";
 import PrimaryButton from "../../components/landingPage/buttons/primaryButton/PrimaryButton";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { Goback } from "../../components/landingPage/buttons/Goback/Goback";
 
 //component
 const Visit = () => {
@@ -45,10 +46,7 @@ const Visit = () => {
       <>
         <div className="container m-auto">
           <div className="flex items-center justify-around">
-            <PrimaryButton
-              title={<IoMdArrowRoundBack />}
-              hanelClick={() => navigate(-1)}
-            />
+            <Goback />
             <h1 className="flex-1 py-4 text-xl text-center border-b">
               {Object.keys(newVisit).length > 0
                 ? "Edit visit"

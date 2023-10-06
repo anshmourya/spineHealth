@@ -26,11 +26,8 @@ const TableStructure = ({
             </tr>
           </thead>
           <tbody>
-            {patientData.map((pateintData) => (
-              <tr
-                key={pateintData.id}
-                className="font-normal even:bg-slate-100"
-              >
+            {patientData.map((pateintData, index) => (
+              <tr key={index} className="font-normal even:bg-slate-100">
                 {Header.map((header, index) => {
                   const patientDataTitle = header.split(" ").join("");
                   const patientDataValue = pateintData[patientDataTitle];
