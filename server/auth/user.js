@@ -13,9 +13,9 @@ router.use(
     proxy: true,
     name: 'auth-id',
     cookie: {
-      // secure: true,
-      // httpOnly: false,
-      // sameSite: "none",
+      secure: true,
+      httpOnly: false,
+      sameSite: "none",
       maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days in milliseconds
     },
   }),
