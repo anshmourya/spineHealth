@@ -1,34 +1,34 @@
-import { Goback } from "../../components/landingPage/buttons/Goback/Goback";
-import { useState, useContext } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Goback } from '../../components/landingPage/buttons/Goback/Goback'
+import { useState, useContext } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 //component
-import { Patient } from "../../hooks/Patient";
-import Radio from "../../generalComponents/input/radio/Radio";
-import { useLocation } from "react-router-dom";
-import { CreateButton } from "../dashboard/Dashboard";
+import { Patient } from '../../hooks/Patient'
+import Radio from '../../generalComponents/input/radio/Radio'
+import { useLocation } from 'react-router-dom'
+import { CreateButton } from '../dashboard/Dashboard'
 
 const NewPatient = () => {
   //hooks
-  const { addPatient, editPatient } = useContext(Patient);
-  const { state } = useLocation();
+  const { addPatient, editPatient } = useContext(Patient)
+  const { state } = useLocation()
   const {
     handleSubmit,
     formState: { errors },
     control,
     register,
-  } = useForm();
+  } = useForm()
   //states
   const [patientProfileData, setPatientProfileData] = useState(
-    state ? state : []
-  );
-  const [loading, setLoading] = useState(false);
+    state ? state : [],
+  )
+  const [loading, setLoading] = useState(false)
   //functions
   const handelSubmit = async (data) => {
-    setLoading(true);
-    const newData = await { ...patientProfileData, ...data };
-    state ? editPatient(newData) : addPatient(newData);
-    setLoading(false);
-  };
+    setLoading(true)
+    const newData = await { ...patientProfileData, ...data }
+    state ? editPatient(newData) : addPatient(newData)
+    setLoading(false)
+  }
 
   return (
     <>
@@ -37,34 +37,34 @@ const NewPatient = () => {
           <Goback />
           <h1 className="flex-1 py-4 text-xl text-center border-b">
             {Object.keys(patientProfileData).length > 0
-              ? "Edit Patient"
-              : "Add New Patient"}
+              ? 'Edit Patient'
+              : 'Add New Patient'}
           </h1>
         </div>
         <form onSubmit={handleSubmit(handelSubmit)}>
           <TextInput
-            type={"text"}
-            title={"name"}
-            name={"name"}
+            type={'text'}
+            title={'name'}
+            name={'name'}
             control={control}
             errors={errors}
             patientProfileData={patientProfileData}
           />
           <TextInput
-            type={"number"}
-            title={"Phone Number"}
-            name={"phoneNumber"}
+            type={'number'}
+            title={'Phone Number'}
+            name={'phoneNumber'}
             control={control}
             errors={errors}
             patientProfileData={patientProfileData}
             validateFunc={(value) =>
-              value.length === 10 ? true : "enter valid phone number"
+              value.length === 10 ? true : 'enter valid phone number'
             }
           />
           <TextInput
-            type={"number"}
-            title={"age"}
-            name={"age"}
+            type={'number'}
+            title={'age'}
+            name={'age'}
             control={control}
             errors={errors}
             patientProfileData={patientProfileData}
@@ -75,31 +75,31 @@ const NewPatient = () => {
             errors={errors}
           />
           <TextInput
-            type={"text"}
-            title={"nature Of Working"}
-            name={"natureOfWorking"}
+            type={'text'}
+            title={'nature Of Working'}
+            name={'natureOfWorking'}
             control={control}
             errors={errors}
             patientProfileData={patientProfileData}
           />
           <TextInput
-            type={"text"}
-            title={"Post (Designation)"}
-            name={"designation"}
+            type={'text'}
+            title={'Post (Designation)'}
+            name={'designation'}
             control={control}
             errors={errors}
             patientProfileData={patientProfileData}
           />
           <TextareaInput
-            title={"History Of Illness"}
-            name={"historyOfIllness"}
+            title={'History Of Illness'}
+            name={'historyOfIllness'}
             control={control}
             patientProfileData={patientProfileData}
             errors={errors}
           />
           <TextareaInput
-            title={"Chief Complaint"}
-            name={"chiefComplaint"}
+            title={'Chief Complaint'}
+            name={'chiefComplaint'}
             control={control}
             patientProfileData={patientProfileData}
             errors={errors}
@@ -108,18 +108,18 @@ const NewPatient = () => {
           <CreateButton
             title={
               Object.keys(patientProfileData).length > 0
-                ? "Edit Patient"
-                : "Add New Patient"
+                ? 'Edit Patient'
+                : 'Add New Patient'
             }
             disable={loading}
           />
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default NewPatient;
+export default NewPatient
 
 export function TextInput({
   type,
@@ -131,8 +131,8 @@ export function TextInput({
   patientProfileData,
 }) {
   const defaultValidateFunc = (value) =>
-    value === "" ? `${title} field cannot be empty` : true;
-  const validationFunction = validateFunc || defaultValidateFunc;
+    value === '' ? `${title} field cannot be empty` : true
+  const validationFunction = validateFunc || defaultValidateFunc
 
   return (
     <>
@@ -154,17 +154,17 @@ export function TextInput({
             />
           </div>
         )}
-        defaultValue={patientProfileData[name] || ""}
+        defaultValue={patientProfileData[name] || ''}
       />
       <p
         className={`mx-3 my-2 text-sm font-semibold text-red-500 capitalize ${
-          errors[name] ? "visible" : "invisible"
+          errors[name] ? 'visible' : 'invisible'
         }`}
       >
-        {errors[name]?.message || "this field is required"}
+        {errors[name]?.message || 'this field is required'}
       </p>
     </>
-  );
+  )
 }
 
 export function TextareaInput({
@@ -175,13 +175,13 @@ export function TextareaInput({
   validateFunc,
   patientProfileData,
 }) {
-  const defaultValidateFunc = () => true;
+  const defaultValidateFunc = () => true
 
-  const validationFunction = validateFunc || defaultValidateFunc;
+  const validationFunction = validateFunc || defaultValidateFunc
   return (
     <Controller
       name={name}
-      defaultValue={patientProfileData[name] || ""}
+      defaultValue={patientProfileData[name] || ''}
       control={control}
       rules={{
         validate: (value) => validationFunction(value),
@@ -200,15 +200,15 @@ export function TextareaInput({
               />
               <p
                 className={`mx-3 my-2 text-sm font-semibold text-red-500 capitalize ${
-                  errors[name] ? "visible" : "invisible"
+                  errors[name] ? 'visible' : 'invisible'
                 }`}
               >
-                {errors[name]?.message || "this field is required"}
+                {errors[name]?.message || 'this field is required'}
               </p>
             </div>
           </>
-        );
+        )
       }}
     />
-  );
+  )
 }

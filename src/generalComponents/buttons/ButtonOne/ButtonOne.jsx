@@ -1,5 +1,5 @@
-import React from "react";
-import "./ButtonOne.css";
+import React from 'react'
+import './ButtonOne.css'
 
 const ButtonOne = ({ handelClick }) => {
   return (
@@ -7,7 +7,7 @@ const ButtonOne = ({ handelClick }) => {
       <span className="btn-text-one">import</span>
       <span className="btn-text-two">Patient</span>
     </button>
-  );
-};
+  )
+}
 
-export default ButtonOne;
+export default ButtonOne

@@ -1,25 +1,24 @@
 .primary-input {
-    label {
-        font-size: 18px;
-        font-weight: 600;
-        color: #666;
-        text-transform: capitalize;
-    }
+  label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #666;
+    text-transform: capitalize;
+  }
 
-    input {
-        display: block;
-        height: 42px;
-        border: 1px solid #eaeaea;
-        border-radius: 7px;
-        width: 100%;
-        padding: 10px 15px;
-        color: #111;
-        transition: all 0.3s linear;
-        outline: none;
-    }
-
+  input {
+    display: block;
+    height: 42px;
+    border: 1px solid #eaeaea;
+    border-radius: 7px;
+    width: 100%;
+    padding: 10px 15px;
+    color: #111;
+    transition: all 0.3s linear;
+    outline: none;
+  }
 }
 
 input:focus {
-    border: 1px solid #f68b1f;
+  border: 1px solid #f68b1f;
 }

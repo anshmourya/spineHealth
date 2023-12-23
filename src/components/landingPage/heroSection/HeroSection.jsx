@@ -1,34 +1,34 @@
-import React, { useEffect, useRef } from "react";
-import Typed from "typed.js";
-import shape1 from "../../../assets/images/shape1.svg";
+import React, { useEffect, useRef } from 'react'
+import Typed from 'typed.js'
+import shape1 from '../../../assets/images/shape1.svg'
 
-import PrimaryButton from "../buttons/primaryButton/PrimaryButton";
-import { Link } from "react-scroll";
+import PrimaryButton from '../buttons/primaryButton/PrimaryButton'
+import { Link } from 'react-scroll'
 
 const HeroSection = () => {
-  const el = useRef(null);
+  const el = useRef(null)
   //typing text animation
   useEffect(() => {
     // Create a Typed instance here
     const typed = new Typed(el.current, {
       strings: [
-        "Physio Therapy.",
-        "Acupuncture.",
-        "Chiropractic.",
-        "Cupping.",
-        "Gua sha Therapy.",
+        'Physio Therapy.',
+        'Acupuncture.',
+        'Chiropractic.',
+        'Cupping.',
+        'Gua sha Therapy.',
       ],
       typeSpeed: 100,
       backSpeed: 40,
       backDelay: 100,
       loop: true,
-    });
+    })
 
     // Clean up the Typed instance on component unmount
     return () => {
-      typed.destroy();
-    };
-  }, []);
+      typed.destroy()
+    }
+  }, [])
 
   return (
     <section id="hero" className="h-full">
@@ -49,11 +49,11 @@ const HeroSection = () => {
           unsustainable.
         </p>
         <Link to="contactUs" smooth spy>
-          <PrimaryButton title={"appointment"} size={"lg"} />
+          <PrimaryButton title={'appointment'} size={'lg'} />
         </Link>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

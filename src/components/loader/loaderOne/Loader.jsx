@@ -1,4 +1,4 @@
-import "./Loader.css";
+import './Loader.css'
 const Loader = () => {
   return (
     <>
@@ -9,7 +9,7 @@ const Loader = () => {
         NO DATA FOUND
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

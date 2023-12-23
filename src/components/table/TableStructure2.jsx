@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const TableStructure2 = ({ data, columns }) => {
   return (
@@ -21,14 +21,14 @@ const TableStructure2 = ({ data, columns }) => {
                 data-label={column.header}
                 className="text-right capitalize lg:text-left"
               >
-                {row[column.field] || "-"}
+                {row[column.field] || '-'}
               </td>
             ))}
           </tr>
         ))}
       </tbody>
     </table>
-  );
-};
+  )
+}
 
-export default TableStructure2;
+export default TableStructure2

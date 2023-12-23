@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react'
 // import { Navigate } from "react-router-dom";
-import { Auth } from "../../hooks/Auth";
+import { Auth } from '../../hooks/Auth'
 
 function PrivatePage({ children }) {
-  const { user, getUser } = useContext(Auth);
+  const { user, getUser } = useContext(Auth)
   useEffect(() => {
-    !user && getUser();
-  }, []);
-  return <>{user ? children : <h1>no data</h1>}</>;
+    !user && getUser()
+  }, [])
+  return <>{user ? children : <h1>no data</h1>}</>
 }
 
-export default PrivatePage;
+export default PrivatePage

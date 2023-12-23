@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react'
+import { useLocation, Link } from 'react-router-dom'
 
 //compoent
-import Modal from "../../generalComponents/modal/Modal";
-import TableStructure from "../../components/table/TableStructure";
-import { VisitData } from "../../hooks/Visit";
-import { CreateButton } from "../dashboard/Dashboard";
-import { Goback } from "../../components/landingPage/buttons/Goback/Goback";
+import Modal from '../../generalComponents/modal/Modal'
+import TableStructure from '../../components/table/TableStructure'
+import { VisitData } from '../../hooks/Visit'
+import { CreateButton } from '../dashboard/Dashboard'
+import { Goback } from '../../components/landingPage/buttons/Goback/Goback'
 
 const VisitView = () => {
-  const { VisitView, deleteVisit } = useContext(VisitData);
-  const { state } = useLocation();
+  const { VisitView, deleteVisit } = useContext(VisitData)
+  const { state } = useLocation()
   const {
     name,
     age,
@@ -19,43 +19,43 @@ const VisitView = () => {
     designation,
     timeOfVisit,
     id: pateintId,
-  } = state;
+  } = state
 
-  const [visit, setVisit] = useState([]);
+  const [visit, setVisit] = useState([])
   const patientHeader = [
-    "reason For Visit",
-    "prescribed Medications",
-    "notes",
-    "time Of Visit",
-  ];
+    'reason For Visit',
+    'prescribed Medications',
+    'notes',
+    'time Of Visit',
+  ]
 
   //pateint table header
   const pateintDetailHeader = [
-    "name",
-    "age",
-    "phone Number",
-    "gender",
-    "nature Of Working",
-    "designation",
-    "time Of Visit",
-  ];
+    'name',
+    'age',
+    'phone Number',
+    'gender',
+    'nature Of Working',
+    'designation',
+    'time Of Visit',
+  ]
 
   const handeldeleteVisit = (visit) => {
-    deleteVisit(state.id, visit.visitId);
-  };
+    deleteVisit(state.id, visit.visitId)
+  }
   useEffect(() => {
     const fetchVisitData = async () => {
       try {
-        const visitData = await VisitView(state.id);
-        setVisit(visitData);
+        const visitData = await VisitView(state.id)
+        setVisit(visitData)
       } catch (error) {
         // Handle any error that might occur during data fetching
-        console.error(error);
+        console.error(error)
       }
-    };
+    }
 
-    fetchVisitData();
-  }, []);
+    fetchVisitData()
+  }, [])
   return (
     <>
       <div className="px-2 content">
@@ -73,9 +73,9 @@ const VisitView = () => {
           <h5 className="my-2 text-sm text-gray-500">
             <span className="text-orange-400"> Last Visit: </span> {timeOfVisit}
             <Modal
-              ButtonTitle={"Detail View"}
+              ButtonTitle={'Detail View'}
               ButtonStyle={
-                "w-32 rounded-lg bg-orange-400 py-1.5 font-medium text-white hover:shadow-md text-sm block my-2"
+                'w-32 rounded-lg bg-orange-400 py-1.5 font-medium text-white hover:shadow-md text-sm block my-2'
               }
               ViewComponent={(props) => (
                 <PatientDetail
@@ -91,7 +91,7 @@ const VisitView = () => {
         <div className="flex items-center justify-between px-2 content">
           <h1 className="text-2xl font-semibold max-sm:text-lg">Past Visit</h1>
           <Link to={`/visit/${pateintId}`}>
-            <CreateButton title={"create New Visit"} />
+            <CreateButton title={'create New Visit'} />
           </Link>
         </div>
         {/* //table view  */}
@@ -108,10 +108,10 @@ const VisitView = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default VisitView;
+export default VisitView
 
 //passing this component as a prop in tableStructure for dynamic rendering
 const TableDataView = ({ patientDataValue }) => {
@@ -121,41 +121,41 @@ const TableDataView = ({ patientDataValue }) => {
         <div className="text-sm">
           {patientDataValue.slice(0, 10)}
           <Modal
-            ButtonTitle={"...read more"}
+            ButtonTitle={'...read more'}
             ViewComponent={(props) => (
               <ViewVisit {...props} patientDataValue={patientDataValue} />
             )}
           />
         </div>
       ) : (
-        "-"
+        '-'
       )}
     </>
-  );
-};
+  )
+}
 
 const ViewVisit = ({ patientDataValue }) => (
   <>
     {/* <h5 className="mt-2 font-semibold capitalize">Cheif Complatint</h5> */}
     <p className="py-2 border-b">
-      {patientDataValue || "No dat is present Here."}
+      {patientDataValue || 'No dat is present Here.'}
     </p>
   </>
-);
+)
 
 const PatientDetail = ({ patientData, header }) => (
   <>
     {header.map((headerItem, index) => {
-      const patientDataTitle = headerItem.split(" ").join("");
-      const patientDataValue = patientData[patientDataTitle];
+      const patientDataTitle = headerItem.split(' ').join('')
+      const patientDataValue = patientData[patientDataTitle]
       return (
         <div key={index}>
           <h5 className="mt-2 font-semibold capitalize">{headerItem}</h5>
           <p className="py-2 border-b">
-            {patientDataValue || "No data is present Here."}
+            {patientDataValue || 'No data is present Here.'}
           </p>
         </div>
-      );
+      )
     })}
   </>
-);
+)

@@ -1,11 +1,11 @@
-import React from "react";
-import doctor from "../../../assets/images/doctor.jpg";
-import SectionHeader from "../sectionHeader/SectionHeader";
+import React from 'react'
+import doctor from '../../../assets/images/doctor.jpg'
+import SectionHeader from '../sectionHeader/SectionHeader'
 
 const AboutUs = () => {
   return (
     <section id="aboutUs">
-      <SectionHeader title={"about us"} />
+      <SectionHeader title={'about us'} />
       <div className="container" id="aboutUsWrapper">
         <div>
           <img src={doctor} alt="Dr Ram N Kushwaha" />
@@ -35,7 +35,7 @@ const AboutUs = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AboutUs;
+export default AboutUs

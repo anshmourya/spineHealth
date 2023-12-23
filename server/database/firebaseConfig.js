@@ -1,23 +1,14 @@
 //configure of the fireabse
-const firebase = require("firebase-admin");
+const firebase = require('firebase-admin')
 
-
-//config file 
-const configure = require("./Config.js");
+//config file
+const configure = require('./Config.js')
 
 firebase.initializeApp({
-    credential: firebase.credential.cert(configure),
-
+  credential: firebase.credential.cert(configure),
 })
-const db = firebase.firestore();
+const db = firebase.firestore()
 
-let user = db.collection("user");
+let user = db.collection('user')
 
-
-
-
-
-
-
-
-module.exports = { user, db };
+module.exports = { user, db }

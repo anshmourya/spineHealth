@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useContext, useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 //component
-import { TextInput, TextareaInput } from "../newPatient/NewPatient";
-import { VisitData } from "../../hooks/Visit";
-import PrimaryButton from "../../components/landingPage/buttons/primaryButton/PrimaryButton";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import { Goback } from "../../components/landingPage/buttons/Goback/Goback";
+import { TextInput, TextareaInput } from '../newPatient/NewPatient'
+import { VisitData } from '../../hooks/Visit'
+import PrimaryButton from '../../components/landingPage/buttons/primaryButton/PrimaryButton'
+import { IoMdArrowRoundBack } from 'react-icons/io'
+import { Goback } from '../../components/landingPage/buttons/Goback/Goback'
 
 //component
 const Visit = () => {
@@ -14,19 +14,19 @@ const Visit = () => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm();
+  } = useForm()
 
-  const { id } = useParams();
-  const { addVisit, editVisit } = useContext(VisitData);
-  const navigate = useNavigate();
-  const { state } = useLocation();
+  const { id } = useParams()
+  const { addVisit, editVisit } = useContext(VisitData)
+  const navigate = useNavigate()
+  const { state } = useLocation()
 
-  const [newVisit, setNewVisit] = useState(state ? state : {});
+  const [newVisit, setNewVisit] = useState(state ? state : {})
 
   const onSubmit = (data) => {
-    const newData = { ...newVisit, ...data };
-    state ? editVisit(newData, id, state.visitId) : addVisit(newData, id);
-  };
+    const newData = { ...newVisit, ...data }
+    state ? editVisit(newData, id, state.visitId) : addVisit(newData, id)
+  }
 
   // const textInputHeader = [
   //   { title: "name", type: "text" },
@@ -36,10 +36,10 @@ const Visit = () => {
   // ];
 
   const textareaInputHeader = [
-    { title: "reason For Visit", name: "reasonForVisit" },
-    { title: "prescribed Medications", name: "prescribedMedications" },
-    { title: "Note (If Any)", name: "notes" },
-  ];
+    { title: 'reason For Visit', name: 'reasonForVisit' },
+    { title: 'prescribed Medications', name: 'prescribedMedications' },
+    { title: 'Note (If Any)', name: 'notes' },
+  ]
 
   return (
     <>
@@ -49,8 +49,8 @@ const Visit = () => {
             <Goback />
             <h1 className="flex-1 py-4 text-xl text-center border-b">
               {Object.keys(newVisit).length > 0
-                ? "Edit visit"
-                : "Add New visit"}
+                ? 'Edit visit'
+                : 'Add New visit'}
             </h1>
           </div>
           <form action="" method="post" onSubmit={handleSubmit(onSubmit)}>
@@ -74,7 +74,7 @@ const Visit = () => {
         </div>
       </>
     </>
-  );
-};
+  )
+}
 
-export default Visit;
+export default Visit

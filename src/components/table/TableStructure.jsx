@@ -1,7 +1,7 @@
 //icons
-import { MdOutlineDeleteOutline } from "react-icons/md";
-import { BiEditAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { MdOutlineDeleteOutline } from 'react-icons/md'
+import { BiEditAlt } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
 
 const TableStructure = ({
   patientData,
@@ -29,8 +29,8 @@ const TableStructure = ({
             {patientData.map((pateintData, index) => (
               <tr key={index} className="font-normal even:bg-slate-100">
                 {Header.map((header, index) => {
-                  const patientDataTitle = header.split(" ").join("");
-                  const patientDataValue = pateintData[patientDataTitle];
+                  const patientDataTitle = header.split(' ').join('')
+                  const patientDataValue = pateintData[patientDataTitle]
 
                   return (
                     <td
@@ -43,7 +43,7 @@ const TableStructure = ({
                         state={pateintData}
                       />
                     </td>
-                  );
+                  )
                 })}
 
                 {/* //edit the data */}
@@ -67,7 +67,7 @@ const TableStructure = ({
         </table>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default TableStructure;
+export default TableStructure

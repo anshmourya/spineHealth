@@ -1,16 +1,16 @@
 #top-header {
-    border-bottom: 1px solid #f68b1f;
-    display: none;
+  border-bottom: 1px solid #f68b1f;
+  display: none;
 
-    li {
-        :hover {
-            color: #f68b1f;
-        }
+  li {
+    :hover {
+      color: #f68b1f;
     }
+  }
 }
 
 @media screen and (width >=768px) {
-    #top-header {
-        display: flex;
-    }
+  #top-header {
+    display: flex;
+  }
 }

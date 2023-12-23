@@ -5,145 +5,143 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Barlow',
-        sans-serif;
+  font-family: 'Barlow', sans-serif;
 }
 
 .content {
-    max-width: 1200px;
-    margin: auto;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* *styling table */
 
 table {
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    table-layout: fixed;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
 }
 
-
 table tr {
-    padding: 1em;
+  padding: 1em;
 }
 
 table th,
 table td {
-    padding: .625em;
-    text-align: center;
+  padding: 0.625em;
+  text-align: center;
 }
 
 table th {
-    font-size: .85em;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 600px) {
-    table {
-        border: 0;
-    }
+  table {
+    border: 0;
+  }
 
-    table caption {
-        font-size: 1.3em;
-    }
+  table caption {
+    font-size: 1.3em;
+  }
 
-    table thead {
-        border: none;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
 
-    table tr {
-        border-bottom: 3px solid #ddd;
-        display: block;
-        margin-bottom: .625em;
-    }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
 
-    table td {
-        border-bottom: 1px solid #ddd;
-        display: block;
-        font-size: .8em;
-        text-align: right;
-    }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
 
-    table td::before {
-        /*
+  table td::before {
+    /*
     * aria-label has no advantage, it won't be read inside a table
     content: attr(aria-label);
     */
-        content: attr(data-label);
-        float: left;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
-    table td:last-child {
-        border-bottom: 0;
-    }
+  table td:last-child {
+    border-bottom: 0;
+  }
 }
 
 /* event page */
-.event-sideBar>div {
-    background: white !important;
-    border: 1px solid red;
+.event-sideBar > div {
+  background: white !important;
+  border: 1px solid red;
 }
 
 /* excel styling */
 .fileUpload {
-    background: #010100;
-    border-radius: 15px;
-    color: #fff;
-    font-size: 1em;
-    font-weight: bold;
-    overflow: hidden;
-    padding: 6px;
-    position: relative;
-    text-align: center;
-    width: 132px;
-    cursor: pointer;
-    transition: 1s ease-in-out;
+  background: #010100;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  overflow: hidden;
+  padding: 6px;
+  position: relative;
+  text-align: center;
+  width: 132px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
 }
 
 .fileUpload:hover,
 .fileUpload:active,
 .fileUpload:focus {
-    color: #010100;
-    background: #f6f6f6;
-    cursor: pointer;
+  color: #010100;
+  background: #f6f6f6;
+  cursor: pointer;
 }
 
 .fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    width: 148px;
-    height: 46px;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 148px;
+  height: 46px;
+  cursor: pointer;
 }
 
-input[type="file"] {
-    position: fixed;
-    right: 100%;
-    bottom: 100%;
+input[type='file'] {
+  position: fixed;
+  right: 100%;
+  bottom: 100%;
 }
 
 .custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
 }

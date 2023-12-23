@@ -1,16 +1,16 @@
-import React from "react";
-import { Link as ScrollLink } from "react-scroll";
-import { Link } from "react-router-dom";
-import logo from "../../../../assets/logo/spineHealth.png";
-import PrimaryButton from "../../buttons/primaryButton/PrimaryButton";
-import { RxHamburgerMenu } from "react-icons/rx";
+import React from 'react'
+import { Link as ScrollLink } from 'react-scroll'
+import { Link } from 'react-router-dom'
+import logo from '../../../../assets/logo/spineHealth.png'
+import PrimaryButton from '../../buttons/primaryButton/PrimaryButton'
+import { RxHamburgerMenu } from 'react-icons/rx'
 const MainHeader = ({ fixedNav }) => {
-  const navList = ["home", "knowUs", "service", "aboutUs", "contactUs"];
+  const navList = ['home', 'knowUs', 'service', 'aboutUs', 'contactUs']
   return (
     <>
       <div
         className={`flex items-center justify-around m-auto ${
-          fixedNav ? "fixed-nav" : ""
+          fixedNav ? 'fixed-nav' : ''
         }`}
         id="mainHeader"
       >
@@ -35,14 +35,14 @@ const MainHeader = ({ fixedNav }) => {
           </ul>
         </div>
         <Link to="/login">
-          <PrimaryButton title={"admin login"} />
+          <PrimaryButton title={'admin login'} />
         </Link>
         <div className="hamburger">
           <RxHamburgerMenu />
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MainHeader;
+export default MainHeader

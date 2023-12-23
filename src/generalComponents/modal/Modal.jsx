@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { TiTickOutline } from "react-icons/ti";
+import { useState } from 'react'
+import { TiTickOutline } from 'react-icons/ti'
 
 const Modal = ({ ButtonStyle, ButtonTitle, ViewComponent }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const handleClose = () => setOpenModal(!openModal);
+  const [openModal, setOpenModal] = useState(false)
+  const handleClose = () => setOpenModal(!openModal)
   return (
     <>
       <button className={ButtonStyle} onClick={() => setOpenModal(!openModal)}>
-        {ButtonTitle || ""}
+        {ButtonTitle || ''}
       </button>
 
       {openModal && (
@@ -55,7 +55,7 @@ const Modal = ({ ButtonStyle, ButtonTitle, ViewComponent }) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Modal;
+export default Modal

@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 //assets
 
-import shape2 from "../../assets/images/shape2.svg";
+import shape2 from '../../assets/images/shape2.svg'
 
 //hooks
 //components
-import TopHeader from "../../components/landingPage/navbar/topHeader/TopHeader";
-import MainHeader from "../../components/landingPage/navbar/mainHeader/MainHeader";
-import SectionHeader from "../../components/landingPage/sectionHeader/SectionHeader";
-import HeroSection from "../../components/landingPage/heroSection/HeroSection";
-import Service from "../../components/landingPage/service/Service";
-import AboutUs from "../../components/landingPage/aboutUs/AboutUs";
-import ContactUs from "../../components/landingPage/contactUs/ContactUs";
-import MainFooter from "../../components/landingPage/mainFooter/MainFooter";
+import TopHeader from '../../components/landingPage/navbar/topHeader/TopHeader'
+import MainHeader from '../../components/landingPage/navbar/mainHeader/MainHeader'
+import SectionHeader from '../../components/landingPage/sectionHeader/SectionHeader'
+import HeroSection from '../../components/landingPage/heroSection/HeroSection'
+import Service from '../../components/landingPage/service/Service'
+import AboutUs from '../../components/landingPage/aboutUs/AboutUs'
+import ContactUs from '../../components/landingPage/contactUs/ContactUs'
+import MainFooter from '../../components/landingPage/mainFooter/MainFooter'
 const Home = () => {
   //hooks
-  const [fixedNav, setFixedNav] = useState(false);
+  const [fixedNav, setFixedNav] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollY >= 80 ? setFixedNav(true) : setFixedNav(false);
-    };
+      window.scrollY >= 80 ? setFixedNav(true) : setFixedNav(false)
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
       // Remove the event listener using the same function reference
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const dayNames = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ]
   return (
     <>
       <div className="h-screen" id="home">
@@ -56,7 +56,11 @@ const Home = () => {
         className="my-16"
         // data-aos-duration="1500"
       >
-        <SectionHeader title={"who are we"} />
+        <SectionHeader
+          title={'who are we'}
+          description="The art of medicine consists in amusing the patient while nature cures the disease.
+Treatment without prevention is simply unsustainable."
+        />
         <img src={shape2} alt="" />
         <div className="container h-full m-auto" id="knowUs-wrapper">
           <div>
@@ -109,7 +113,7 @@ const Home = () => {
 
       <MainFooter />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

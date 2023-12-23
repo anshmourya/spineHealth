@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 //components
-import { Sidebar } from "flowbite-react";
-import { TextInput, TextareaInput } from "../newPatient/NewPatient";
-import { CreateButton } from "../dashboard/Dashboard";
+import { Sidebar } from 'flowbite-react'
+import { TextInput, TextareaInput } from '../newPatient/NewPatient'
+import { CreateButton } from '../dashboard/Dashboard'
 
 const Event = () => {
   //hooks
@@ -12,28 +12,28 @@ const Event = () => {
     formState: { errors },
     control,
     register,
-  } = useForm();
+  } = useForm()
   //states
-  const [event, setEvent] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState({});
-  const [images, setImages] = useState(currentEvent.images || []);
+  const [event, setEvent] = useState([])
+  const [currentEvent, setCurrentEvent] = useState({})
+  const [images, setImages] = useState(currentEvent.images || [])
   //functions
   const handelSubmit = (data) => {
-    const formData = new FormData();
-    formData.append("file", images);
-    console.log(data);
-  };
+    const formData = new FormData()
+    formData.append('file', images)
+    console.log(data)
+  }
 
   // Update images state when a new image is selected
   const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
+    const selectedImage = e.target.files[0]
 
     if (selectedImage) {
-      setImages([...images, selectedImage]);
+      setImages([...images, selectedImage])
     }
-  };
+  }
 
-  useEffect(() => console.log(images), [images]);
+  useEffect(() => console.log(images), [images])
   return (
     <>
       <div className="flex ">
@@ -42,24 +42,24 @@ const Event = () => {
 
           <form onSubmit={handleSubmit(handelSubmit)}>
             <TextInput
-              name={"title"}
-              type={"text"}
-              title={"title"}
+              name={'title'}
+              type={'text'}
+              title={'title'}
               control={control}
               errors={errors}
               patientProfileData={currentEvent}
             />
             <TextareaInput
-              title={"description"}
-              name={"description"}
+              title={'description'}
+              name={'description'}
               control={control}
               patientProfileData={currentEvent}
               errors={errors}
             />
             <TextInput
-              name={"place"}
-              type={"text"}
-              title={"place"}
+              name={'place'}
+              type={'text'}
+              title={'place'}
               control={control}
               errors={errors}
               patientProfileData={currentEvent}
@@ -70,15 +70,15 @@ const Event = () => {
               </label>
               <input
                 type="file"
-                {...register("file", {
-                  required: "enter the image",
+                {...register('file', {
+                  required: 'enter the image',
                   onChange: handleImageChange,
                 })}
               />
               {errors.certificate && <p>{errors.certificate}</p>}
             </div>
 
-            <CreateButton title={"submit"} />
+            <CreateButton title={'submit'} />
           </form>
           {images.map((image, index) => (
             <div key={index}>
@@ -100,7 +100,7 @@ const Event = () => {
         </Sidebar>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Event;
+export default Event

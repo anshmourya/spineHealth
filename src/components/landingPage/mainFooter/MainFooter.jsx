@@ -1,9 +1,9 @@
-import React from "react";
-import { AiOutlineInstagram } from "react-icons/ai";
-import { Link } from "react-scroll";
+import React from 'react'
+import { AiOutlineInstagram } from 'react-icons/ai'
+import { Link } from 'react-scroll'
 const MainFooter = () => {
-  const navList = ["home", "knowUs", "service", "contactUs", "aboutUs"];
-  const services = ["COD", "Cupping", "Weight & inch loss"];
+  const navList = ['home', 'knowUs', 'service', 'contactUs', 'aboutUs']
+  const services = ['COD', 'Cupping', 'Weight & inch loss']
   return (
     <footer className="footer">
       <div className="container m-auto">
@@ -34,7 +34,7 @@ const MainFooter = () => {
                   <Link
                     activeClass="active"
                     spy
-                    to={"service"}
+                    to={'service'}
                     smooth
                     className="cursor-pointer"
                   >
@@ -73,7 +73,7 @@ const MainFooter = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default MainFooter;
+export default MainFooter

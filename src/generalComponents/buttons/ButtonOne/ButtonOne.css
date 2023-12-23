@@ -1,44 +1,44 @@
 .btn {
-    width: 132px;
-    height: 39px;
-    background: #fb923c;
-    color: #fff;
-    border-radius: 50px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+  width: 132px;
+  height: 39px;
+  background: #fb923c;
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn span {
-    font-size: 14px;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    transition: top 0.5s;
-    font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  transition: top 0.5s;
+  font-weight: 600;
 }
 
 .btn-text-one {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 .btn-text-two {
-    position: absolute;
-    width: 100%;
-    top: 150%;
-    left: 0;
-    transform: translateY(-50%);
+  position: absolute;
+  width: 100%;
+  top: 150%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 .btn:hover .btn-text-one {
-    top: -100%;
+  top: -100%;
 }
 
 .btn:hover .btn-text-two {
-    top: 50%;
+  top: 50%;
 }

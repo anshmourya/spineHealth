@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 //icons
-import { AiOutlineSearch } from "react-icons/ai";
-import { RxCross1 } from "react-icons/rx";
+import { AiOutlineSearch } from 'react-icons/ai'
+import { RxCross1 } from 'react-icons/rx'
 
 const SerachInput = ({ value, onChangeAction, clearInput }) => {
   return (
@@ -11,12 +11,12 @@ const SerachInput = ({ value, onChangeAction, clearInput }) => {
         type="text"
         placeholder="Search within pateint"
         className="outline-none md:text-lg"
-        value={value || ""}
+        value={value || ''}
         onChange={onChangeAction}
       />
       <RxCross1 className="text-sm cursor-pointer" onClick={clearInput} />
     </div>
-  );
-};
+  )
+}
 
-export default SerachInput;
+export default SerachInput

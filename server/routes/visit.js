@@ -1,151 +1,139 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 //database modules
-const { user } = require("../database/firebaseConfig")
-
+const { user } = require('../database/firebaseConfig')
 
 //helper functions
-const { getCurrentTimeAndDate } = require("../helper/helperFunction")
-const uniqid = require('uniqid'); //user to generate unique identifier key
-
+const { getCurrentTimeAndDate } = require('../helper/helperFunction')
+const uniqid = require('uniqid') //user to generate unique identifier key
 
 //get all the visit of the particular patient
-router.get("/visit/:id", async (req, res) => {
-    const patient = user.doc(req.user).collection("patient")
-    try {
-        const { id: patientId } = req.params
+router.get('/visit/:id', async (req, res) => {
+  const patient = user.doc(req.user).collection('patient')
+  try {
+    const { id: patientId } = req.params
 
-        const patientRef = await patient.doc(patientId).collection("visit").get();
-        const response = patientRef.docs.map((doc) => doc.data())
+    const patientRef = await patient.doc(patientId).collection('visit').get()
+    const response = patientRef.docs.map((doc) => doc.data())
 
-        res.status(200).json({
-            error: null,
+    res.status(200).json({
+      error: null,
 
-
-
-            message: "successfully retrived patient visit",
-            data: response
-        })
-
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({
-            error: error,
-            message: "Failed to get visit of the patient try again.",
-            data: null
-        })
-    }
-});
+      message: 'successfully retrived patient visit',
+      data: response,
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      error: error,
+      message: 'Failed to get visit of the patient try again.',
+      data: null,
+    })
+  }
+})
 
 //get particular visit of the particular patient
-router.get("/visit/:id/:visitId", async (req, res) => {
-    const patient = user.doc(req.user).collection("patient")
-    try {
-        const { id: patientId, visitId } = req.params
-        const response = (await patient.doc(patientId).collection("visit").doc(visitId).get()).data()
+router.get('/visit/:id/:visitId', async (req, res) => {
+  const patient = user.doc(req.user).collection('patient')
+  try {
+    const { id: patientId, visitId } = req.params
+    const response = (
+      await patient.doc(patientId).collection('visit').doc(visitId).get()
+    ).data()
 
-        res.status(200).json({
-            error: null,
-            message: "successfully retrived patient visit",
-            data: response
-        })
-
-
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({
-            error: error,
-            message: "Failed to get visit of this patient try again.",
-            data: null
-        })
-    }
-});
-
+    res.status(200).json({
+      error: null,
+      message: 'successfully retrived patient visit',
+      data: response,
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      error: error,
+      message: 'Failed to get visit of this patient try again.',
+      data: null,
+    })
+  }
+})
 
 //add new vist to the database
-router.post("/visit", async (req, res) => {
-    const patient = user.doc(req.user).collection("patient")
-    try {
-        const { id: patientId, ...visitData } = req.body
-        //vistData is consist of {nature of disease , medication given , note[if any]}
-        const visitId = uniqid()
-        const newVisit = {
-            visitId: visitId,
-            ...visitData,
-            timeOfVisit: getCurrentTimeAndDate()
-        }
-
-        const vistRef = patient.doc(patientId).collection("visit") //creating the new collection
-        await vistRef.doc(visitId).set(newVisit)
-
-        res.status(200).json({
-            error: null,
-            message: "successfully added visit of the patient",
-            data: null,
-        })
-
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({
-            error: error,
-            message: "Failed to new visit of the patient try again.",
-            data: null
-        })
+router.post('/visit', async (req, res) => {
+  const patient = user.doc(req.user).collection('patient')
+  try {
+    const { id: patientId, ...visitData } = req.body
+    //vistData is consist of {nature of disease , medication given , note[if any]}
+    const visitId = uniqid()
+    const newVisit = {
+      visitId: visitId,
+      ...visitData,
+      timeOfVisit: getCurrentTimeAndDate(),
     }
 
-});
+    const vistRef = patient.doc(patientId).collection('visit') //creating the new collection
+    await vistRef.doc(visitId).set(newVisit)
+
+    res.status(200).json({
+      error: null,
+      message: 'successfully added visit of the patient',
+      data: null,
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      error: error,
+      message: 'Failed to new visit of the patient try again.',
+      data: null,
+    })
+  }
+})
 
 //edit the existing visit or update the existing of the patient
-router.put("/visit/:patientId/:visitId", async (req, res) => {
-    const patient = user.doc(req.user).collection("patient")
-    try {
-        const { patientId, visitId } = req.params
+router.put('/visit/:patientId/:visitId', async (req, res) => {
+  const patient = user.doc(req.user).collection('patient')
+  try {
+    const { patientId, visitId } = req.params
 
+    const patientRef = patient.doc(patientId).collection('visit').doc(visitId)
+    await patientRef.update(req.body)
 
-        const patientRef = patient.doc(patientId).collection("visit").doc(visitId);
-        await patientRef.update(req.body);
-
-        res.status(200).json({
-            error: null,
-            message: "successfully updated visit of the patient",
-            data: null,
-        })
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            error: error,
-            message: "Failed to update visit of the patient try again.",
-            data: null
-        });
-    }
-});
+    res.status(200).json({
+      error: null,
+      message: 'successfully updated visit of the patient',
+      data: null,
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      error: error,
+      message: 'Failed to update visit of the patient try again.',
+      data: null,
+    })
+  }
+})
 
 //deleting the vist of the existing patient
-router.delete("/visit/:id/:visitId", async (req, res) => {
-    const patient = user.doc(req.user).collection("patient")
+router.delete('/visit/:id/:visitId', async (req, res) => {
+  const patient = user.doc(req.user).collection('patient')
 
-    try {
-        const { id: patientId, visitId } = req.params;
-        console.log(patientId, visitId);
-        const pateintRef = patient.doc(patientId).collection("visit").doc(visitId);
-        await pateintRef.delete();
+  try {
+    const { id: patientId, visitId } = req.params
+    console.log(patientId, visitId)
+    const pateintRef = patient.doc(patientId).collection('visit').doc(visitId)
+    await pateintRef.delete()
 
-        res.status(200).json({
-            error: null,
-            message: "Patient visit was successfully deleted.",
-            data: null,
-        })
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            error: error,
-            message: "Failed to delete visit of the patient try again.",
-            data: null
-        });
-    }
-
-});
-module.exports = router;
+    res.status(200).json({
+      error: null,
+      message: 'Patient visit was successfully deleted.',
+      data: null,
+    })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({
+      error: error,
+      message: 'Failed to delete visit of the patient try again.',
+      data: null,
+    })
+  }
+})
+module.exports = router

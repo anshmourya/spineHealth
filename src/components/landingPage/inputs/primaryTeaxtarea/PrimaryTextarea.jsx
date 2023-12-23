@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const PrimaryTextarea = React.forwardRef(({ label, ...rest }, ref) => {
   return (
@@ -6,8 +6,8 @@ const PrimaryTextarea = React.forwardRef(({ label, ...rest }, ref) => {
       <label>{label}</label>
       <textarea cols="30" rows="5" ref={ref} {...rest}></textarea>
     </div>
-  );    
-});
+  )
+})
 
-PrimaryTextarea.displayName = "PrimaryTextarea";
-export default PrimaryTextarea;
+PrimaryTextarea.displayName = 'PrimaryTextarea'
+export default PrimaryTextarea

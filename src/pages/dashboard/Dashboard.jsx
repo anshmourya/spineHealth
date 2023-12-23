@@ -1,39 +1,39 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState } from 'react'
 
-import { Patient } from "../../hooks/Patient";
+import { Patient } from '../../hooks/Patient'
 //component
-import TableStructure from "../../components/table/TableStructure";
-import SearchPatient from "../../generalComponents/SearchPatient";
+import TableStructure from '../../components/table/TableStructure'
+import SearchPatient from '../../generalComponents/SearchPatient'
 
 //icons
-import { AiOutlinePlus } from "react-icons/ai";
-import Loader from "../../components/loader/loaderOne/Loader";
-import { Link } from "react-router-dom";
-import Excel from "../../components/excel/Excel";
+import { AiOutlinePlus } from 'react-icons/ai'
+import Loader from '../../components/loader/loaderOne/Loader'
+import { Link } from 'react-router-dom'
+import Excel from '../../components/excel/Excel'
 
 const Dashboard = () => {
-  const { patientData, getAllPatients, deletePatient } = useContext(Patient);
+  const { patientData, getAllPatients, deletePatient } = useContext(Patient)
 
-  const [patientToDisplay, setPatientToDisplay] = useState([]);
+  const [patientToDisplay, setPatientToDisplay] = useState([])
 
   useEffect(() => {
-    getAllPatients();
-  }, []);
+    getAllPatients()
+  }, [])
 
   //pateint table header
   const patientHeader = [
-    "name",
-    "age",
-    "phone Number",
-    "gender",
-    "nature Of Working",
-    "designation",
-    "time Of Visit",
-  ];
+    'name',
+    'age',
+    'phone Number',
+    'gender',
+    'nature Of Working',
+    'designation',
+    'time Of Visit',
+  ]
 
   const handeldelete = (patient) => {
-    deletePatient(patient.id);
-  };
+    deletePatient(patient.id)
+  }
   return (
     <>
       {patientData && (
@@ -45,7 +45,7 @@ const Dashboard = () => {
             />
             <div>
               <Link to="/newPatient">
-                <CreateButton title={"create new Patient"} />
+                <CreateButton title={'create new Patient'} />
               </Link>
             </div>
             <Excel />
@@ -57,7 +57,7 @@ const Dashboard = () => {
               deleteData={handeldelete}
               Header={patientHeader}
               TableDataView={TableDataView}
-              editNavigationLink={"/newPatient"}
+              editNavigationLink={'/newPatient'}
             />
           ) : (
             <Loader />
@@ -65,10 +65,10 @@ const Dashboard = () => {
         </>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard
 
 export function CreateButton({ title, disable }) {
   return (
@@ -78,15 +78,15 @@ export function CreateButton({ title, disable }) {
     >
       {title} <AiOutlinePlus className="text-white" />
     </button>
-  );
+  )
 }
 
 function TableDataView({ patientDataValue, state }) {
   return (
     <>
       <Link to="/visitView" state={state}>
-        {patientDataValue !== undefined ? patientDataValue : "-"}
+        {patientDataValue !== undefined ? patientDataValue : '-'}
       </Link>
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef } from 'react'
 
 const PrimaryInput = forwardRef(({ label, ...rest }, ref) => {
   return (
@@ -6,9 +6,9 @@ const PrimaryInput = forwardRef(({ label, ...rest }, ref) => {
       <label>{label}</label>
       <input type="text" ref={ref} {...rest} />
     </div>
-  );
-});
+  )
+})
 
-PrimaryInput.displayName = "PrimaryInput";
+PrimaryInput.displayName = 'PrimaryInput'
 
-export default PrimaryInput;
+export default PrimaryInput

@@ -1,165 +1,150 @@
 //hero/home section
 #hero {
-    position: relative;
-    background-color: rgba(184, 110, 12, 0.1);
+  position: relative;
+  background-color: rgba(184, 110, 12, 0.1);
 }
 
 .fixed-nav {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    animation: nav .3s linear;
-
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  animation: nav 0.3s linear;
 }
 
 .shape-1 {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
 
 //hero-container
 .hero {
-    h1 {
-        font-size: 32px;
-        margin-bottom: 19px;
-        line-height: 1.2;
-    }
+  h1 {
+    font-size: 32px;
+    margin-bottom: 19px;
+    line-height: 1.2;
+  }
 
-    p {
-        font-size: 17px;
-        margin-bottom: 42px;
-        line-height: 1.3;
-        color: #949a9b;
-    }
-
-
+  p {
+    font-size: 17px;
+    margin-bottom: 42px;
+    line-height: 1.3;
+    color: #949a9b;
+  }
 }
 
 @media screen and (width >=768px) {
-    #hero {
-        h1 {
-            font-size: 60px;
-        }
-
-        p {
-            font-size: 18px;
-        }
+  #hero {
+    h1 {
+      font-size: 60px;
     }
+
+    p {
+      font-size: 18px;
+    }
+  }
 }
 
 @keyframes nav {
-    0% {
-        transform: translateY(-30px);
-    }
+  0% {
+    transform: translateY(-30px);
+  }
 
-    100% {
-        transform: translateY(0);
-    }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 // =================================================
 //knowus section starts from here
 // =================================================
 
-
 #knowUs {
-    position: relative;
-    padding: 0 10px;
+  position: relative;
+  padding: 0 10px;
 
+  img {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+    object-fit: cover;
+    display: none;
+  }
 
-    img {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        z-index: -1;
-        object-fit: cover;
-        display: none;
-    }
+  h2 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 20px 0;
+  }
 
-    h2 {
-
-        font-size: 32px;
-        font-weight: 800;
-        line-height: 1.3;
-        margin: 20px 0;
-
-    }
-
-    p {
-        word-spacing: 1px;
-        font-size: 16px;
-
-    }
+  p {
+    word-spacing: 1px;
+    font-size: 16px;
+  }
 }
 
 #knowUs-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
-
-
 .timeTable-wrapper {
-    padding: 30px 20px;
-    background: #f8f9fb;
-
-
+  padding: 30px 20px;
+  background: #f8f9fb;
 }
 
 #timeTable {
+  width: 100%;
+  margin-top: 30px;
 
-    width: 100%;
-    margin-top: 30px;
+  h3 {
+    color: #2f384c;
+    font-size: 23px;
+    font-weight: 600;
+  }
 
-    h3 {
-        color: #2f384c;
-        font-size: 23px;
-        font-weight: 600;
+  ul {
+    li {
+      border-bottom: 1px dashed #b5b5b5;
+      padding: 10px 0;
     }
-
-    ul {
-
-
-        li {
-            border-bottom: 1px dashed #b5b5b5;
-            padding: 10px 0;
-        }
-    }
+  }
 }
 
 @media screen and (width >=768px) {
-    #knowUs {
-        padding: 150px 0;
+  #knowUs {
+    padding: 150px 0;
 
-        h2 {
-            font-size: 45px;
-        }
-
-        p {
-            font-size: 17px;
-        }
-
-        img {
-            display: block;
-        }
+    h2 {
+      font-size: 45px;
     }
 
-    #knowUs-wrapper {
-        width: auto;
-        flex-direction: row;
+    p {
+      font-size: 17px;
     }
+
+    img {
+      display: block;
+    }
+  }
+
+  #knowUs-wrapper {
+    width: auto;
+    flex-direction: row;
+  }
 }
 
 @media screen and (width >=1440px) {
-    #knowUs-wrapper>div {
-        flex: 0 0 41.666667%;
-    }
+  #knowUs-wrapper > div {
+    flex: 0 0 41.666667%;
+  }
 }
 
 // =================================================
@@ -167,238 +152,232 @@
 // =================================================
 
 #service {
-    margin: 100px auto;
-    padding: 20px;
+  margin: 100px auto;
+  padding: 20px;
 }
 
 #serviceWrapper {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 30px;
-    margin: 100px auto;
-    height: 100%;
-    background-color: #fffefe;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 30px;
+  margin: 100px auto;
+  height: 100%;
+  background-color: #fffefe;
 
+  img {
+    width: 100px;
+    margin: auto;
+  }
 
+  h3 {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 20px 0;
+  }
 
-    img {
-        width: 100px;
-        margin: auto;
-
-    }
-
-    h3 {
-        font-size: 20px;
-        text-transform: capitalize;
-        font-weight: 600;
-        margin: 20px 0;
-    }
-
-    p {
-        line-height: 1.3;
-        color: #949a9b;
-    }
+  p {
+    line-height: 1.3;
+    color: #949a9b;
+  }
 }
 
-#serviceWrapper>div {
-    text-align: center;
-    border: 1px solid #eaeaea;
-    width: 100%;
-    padding: 20px 30px;
-    border-radius: 6px;
-    transition: .2s linear;
+#serviceWrapper > div {
+  text-align: center;
+  border: 1px solid #eaeaea;
+  width: 100%;
+  padding: 20px 30px;
+  border-radius: 6px;
+  transition: 0.2s linear;
 }
 
-#serviceWrapper>div:hover {
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
-        rgba(0, 0, 0, 0.07) 0px 2px 4px,
-        rgba(0, 0, 0, 0.07) 0px 4px 8px,
-        rgba(0, 0, 0, 0.07) 0px 8px 16px,
-        rgba(0, 0, 0, 0.07) 0px 16px 32px,
-        rgba(0, 0, 0, 0.07) 0px 32px 64px;
+#serviceWrapper > div:hover {
+  box-shadow:
+    rgba(0, 0, 0, 0.07) 0px 1px 2px,
+    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+    rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 @media screen and (width >=768px) {
-    #serviceWrapper {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-    }
+  #serviceWrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
 
 @media screen and (width >=1024px) {
-    #serviceWrapper {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-    }
+  #serviceWrapper {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
 }
 
 // =================================================
 //About us section starts from here
 // =================================================
 #aboutUs {
-    padding: 10px;
+  padding: 10px;
 }
 
 #aboutUsWrapper {
-    margin: 100px auto;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+  margin: 100px auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 
+  h2 {
+    font-size: 32px;
+    font-weight: 800;
+  }
 
-    h2 {
-        font-size: 32px;
-        font-weight: 800;
-    }
+  h5 {
+    color: #949a9b;
+    // font-size: 17px;
+    font-size: 15px;
+  }
 
-    h5 {
-        color: #949a9b;
-        // font-size: 17px;
-        font-size: 15px;
-    }
-
-    img {
-        width: 400px;
-    }
+  img {
+    width: 400px;
+  }
 }
 
 .aboutDetail {
+  h3 {
+    // font-size: 52px;
+    font-size: 42px;
+    line-height: 1.3;
+    font-weight: 800;
+  }
 
+  p {
+    margin: 10px auto;
+    font-size: 16px;
+  }
 
-    h3 {
-        // font-size: 52px;  
-        font-size: 42px;
-        line-height: 1.3;
-        font-weight: 800;
-    }
-
-    p {
-        margin: 10px auto;
-        font-size: 16px;
-    }
-
-    h6 {
-        font-size: 32px;
-        font-weight: 800;
-        text-transform: capitalize;
-        -webkit-text-stroke: 1px #f68b1f;
-    }
+  h6 {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: capitalize;
+    -webkit-text-stroke: 1px #f68b1f;
+  }
 }
 
 @media screen and (width >=1024px) {
-    #aboutUsWrapper {
-        flex-direction: row;
-        gap: 40px;
+  #aboutUsWrapper {
+    flex-direction: row;
+    gap: 40px;
 
-        h5 {
-            font-size: 17px;
-        }
+    h5 {
+      font-size: 17px;
     }
+  }
 
-    .aboutDetail {
-        h3 {
-            font-size: 52px;
-        }
+  .aboutDetail {
+    h3 {
+      font-size: 52px;
     }
+  }
 }
-
 
 // =================================================
 //Footer us section starts from here
 // =================================================
 .row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 .footer {
-    // background-color: #24262b;
-    background-color: #f78a1f;
+  // background-color: #24262b;
+  background-color: #f78a1f;
 
-    background-size: cover;
-    padding: 70px 0;
+  background-size: cover;
+  padding: 70px 0;
 }
 
 .footer-col {
-    width: 25%;
-    padding: 0 15px;
+  width: 25%;
+  padding: 0 15px;
 }
 
 .footer-col h4 {
-    font-size: 18px;
-    color: #ffffff;
-    text-transform: capitalize;
-    margin-bottom: 35px;
-    font-weight: 500;
-    position: relative;
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 35px;
+  font-weight: 500;
+  position: relative;
 }
 
 .footer-col h4::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    background-color: #ac5316;
-    height: 2px;
-    box-sizing: border-box;
-    width: 50px;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #ac5316;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
 }
 
 .footer-col ul li:not(:last-child) {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer-col ul li a {
-    font-size: 16px;
-    text-transform: capitalize;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 300;
-    color: #ffffff;
-    display: block;
-    transition: all 0.3s ease;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #ffffff;
+  display: block;
+  transition: all 0.3s ease;
 }
 
 .footer-col ul li a:hover {
-    color: #ffffff;
-    padding-left: 8px;
+  color: #ffffff;
+  padding-left: 8px;
 }
 
 .footer-col .social-links svg {
-    cursor: pointer;
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0 10px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: #ffffff;
-    transition: all 0.5s ease;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
 }
 
 .footer-col .social-links svg:hover {
-    color: #ac5316;
-    background-color: #ffffff;
+  color: #ac5316;
+  background-color: #ffffff;
 }
 
 /*responsive*/
-@media(max-width: 767px) {
-    .footer-col {
-        width: 50%;
-        margin-bottom: 30px;
-    }
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
 }
 
-@media(max-width: 574px) {
-    .footer-col {
-        width: 100%;
-    }
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%;
+  }
 }

@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
-import "./login.css";
-import { useForm } from "react-hook-form";
-import { Auth } from "../../hooks/Auth";
+import React, { useContext } from 'react'
+import './login.css'
+import { useForm } from 'react-hook-form'
+import { Auth } from '../../hooks/Auth'
 
 const Login = () => {
-  const { getLogin } = useContext(Auth);
+  const { getLogin } = useContext(Auth)
   const {
     handleSubmit,
     formState: { errors },
     register,
-  } = useForm();
+  } = useForm()
 
   const onSubmit = async (data) => {
-    await getLogin(data);
-  };
+    await getLogin(data)
+  }
   return (
     <>
       <div className="h-screen bg-white">
@@ -23,33 +23,33 @@ const Login = () => {
             <div className="user-box">
               <input
                 type="text"
-                {...register("username", {
-                  required: "this field is required",
+                {...register('username', {
+                  required: 'this field is required',
                 })}
               />
               <label>Username</label>
               <p
                 className={`my-3 text-sm font-semibold text-red-500 capitalize  ${
-                  errors.username ? "visible" : "invisible"
+                  errors.username ? 'visible' : 'invisible'
                 }`}
               >
-                {errors.username?.message || "this field is required"}
+                {errors.username?.message || 'this field is required'}
               </p>
             </div>
             <div className="user-box">
               <input
                 type="password"
-                {...register("password", {
-                  required: "this field is required",
+                {...register('password', {
+                  required: 'this field is required',
                 })}
               />
               <label>Password</label>
               <p
                 className={` my-3 text-sm font-semibold text-red-500 capitalize ${
-                  errors.password ? "visible" : "invisible"
+                  errors.password ? 'visible' : 'invisible'
                 }`}
               >
-                {errors.password?.message || "this field is required"}
+                {errors.password?.message || 'this field is required'}
               </p>
             </div>
             <button>
@@ -65,10 +65,11 @@ const Login = () => {
             <a href="" className="a2">
               Sign up!
             </a>
-          </p> */}        </div>
+          </p> */}{' '}
+        </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

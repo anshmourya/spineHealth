@@ -1,39 +1,39 @@
-import React from "react";
-import SectionHeader from "../sectionHeader/SectionHeader";
-import PrimaryInput from "../inputs/primaryInput/PrimaryInput";
-import shape1 from "../../../assets/images/shape1.svg";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, Controller } from "react-hook-form";
-import PrimaryTextarea from "../inputs/primaryTeaxtarea/PrimaryTextarea";
-import SecondaryButton from "../buttons/secondaryButton/SecondaryButton";
-import { alert, success } from "../../../helper/notification";
+import React from 'react'
+import SectionHeader from '../sectionHeader/SectionHeader'
+import PrimaryInput from '../inputs/primaryInput/PrimaryInput'
+import shape1 from '../../../assets/images/shape1.svg'
+import * as Yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm, Controller } from 'react-hook-form'
+import PrimaryTextarea from '../inputs/primaryTeaxtarea/PrimaryTextarea'
+import SecondaryButton from '../buttons/secondaryButton/SecondaryButton'
+import { alert, success } from '../../../helper/notification'
 
 const ContactUs = () => {
   const schema = Yup.object().shape({
-    name: Yup.string().required("Full Name is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
+    name: Yup.string().required('Full Name is required'),
+    email: Yup.string().email('Invalid email').required('Email is required'),
     phoneNumber: Yup.string()
-      .matches(/^\d{10}$/, "Invalid phone number")
-      .required("Phone Number is required"),
+      .matches(/^\d{10}$/, 'Invalid phone number')
+      .required('Phone Number is required'),
     // Add more fields as needed
-    subject: Yup.string().required("Subject is required"),
-  });
+    subject: Yup.string().required('Subject is required'),
+  })
 
   const {
     handleSubmit,
     control,
     reset,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) });
+  } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = async (data) => {
-    const { name, email, phoneNumber, subject, message } = data;
+    const { name, email, phoneNumber, subject, message } = data
     const emailConfig = {
-      SecureToken: "99f16389-92f6-495a-a798-ee9295a9167b",
-      To: "spinehealthphysio@gmail.com",
-      From: "spinehealthphysio@gmail.com",
-      Subject: "Appointment request from client",
+      SecureToken: '99f16389-92f6-495a-a798-ee9295a9167b',
+      To: 'spinehealthphysio@gmail.com',
+      From: 'spinehealthphysio@gmail.com',
+      Subject: 'Appointment request from client',
       Body: `
       <table style="width:100%">
   <tr>
@@ -57,28 +57,28 @@ const ContactUs = () => {
  <td>${message}</td>
   </tr>
 </table>`,
-    };
+    }
     try {
       if (window.Email) {
-        const response = await window.Email.send(emailConfig);
-        console.log(response);
-        response && success("Appointment request sent, expect our call soon.");
-        reset();
+        const response = await window.Email.send(emailConfig)
+        console.log(response)
+        response && success('Appointment request sent, expect our call soon.')
+        reset()
       }
     } catch (error) {
-      console.log(error);
-      alert("Error sending appointment request");
+      console.log(error)
+      alert('Error sending appointment request')
     }
-  };
+  }
   const Form = [
-    { label: "full name", name: "name" },
-    { label: "email address", name: "email" },
-    { label: "subject", name: "subject" },
-    { label: "phone number", name: "phoneNumber" },
-  ];
+    { label: 'full name', name: 'name' },
+    { label: 'email address', name: 'email' },
+    { label: 'subject', name: 'subject' },
+    { label: 'phone number', name: 'phoneNumber' },
+  ]
   return (
-    <section className="container relative m-auto p-5" id="contactUs">
-      <SectionHeader title={"book an appointment"} />
+    <section className="container relative p-5 m-auto" id="contactUs">
+      <SectionHeader title={'book an appointment'} />
       <div className="shape-1">
         <img src={shape1} alt="" />
       </div>
@@ -111,15 +111,15 @@ const ContactUs = () => {
           defaultValue=""
           render={({ field }) => (
             <div>
-              <PrimaryTextarea label={"message"} {...field} />
+              <PrimaryTextarea label={'message'} {...field} />
             </div>
           )}
         />
 
-        <SecondaryButton label={"appointment"} type="submit" />
+        <SecondaryButton label={'appointment'} type="submit" />
       </form>
     </section>
-  );
-};
+  )
+}
 
-export default ContactUs;
+export default ContactUs

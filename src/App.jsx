@@ -1,16 +1,16 @@
-import "./App.css";
-import "./styles/styles.css";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
-import { Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/dashboard/Dashboard";
-import NewPatient from "./pages/newPatient/NewPatient";
-import Visit from "./pages/patientVist/Visit";
-import VisitView from "./pages/visitView/VisitView";
-import Login from "./pages/login/Login";
-import PrivatePage from "./components/privateRoute/PrivatePage"; // Import PrivatePage component
-import Event from "./pages/event/Event";
-import Home from "./pages/home/Home";
+import './App.css'
+import './styles/styles.css'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
+import { Route, Routes } from 'react-router-dom'
+import Dashboard from './pages/dashboard/Dashboard'
+import NewPatient from './pages/newPatient/NewPatient'
+import Visit from './pages/patientVist/Visit'
+import VisitView from './pages/visitView/VisitView'
+import Login from './pages/login/Login'
+import PrivatePage from './components/privateRoute/PrivatePage' // Import PrivatePage component
+import Event from './pages/event/Event'
+import Home from './pages/home/Home'
 
 const App = () => {
   return (
@@ -61,7 +61,7 @@ const App = () => {
       </Routes>
       <ToastContainer />
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
